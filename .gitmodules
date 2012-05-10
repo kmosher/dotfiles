@@ -10,3 +10,6 @@
 [submodule ".emacs.d/extern/popup"]
 	path = .emacs.d/extern/popup
 	url = https://github.com/m2ym/popup-el.git
+[submodule ".emacs.d/extern/pymacs"]
+	path = .emacs.d/extern/pymacs
+	url = https://github.com/pinard/Pymacs.git

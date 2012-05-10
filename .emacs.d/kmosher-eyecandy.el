@@ -4,7 +4,7 @@
 (require 'color-theme)
 (global-font-lock-mode 1)
 (color-theme-initialize)
-(color-theme-hober)
+(color-theme-calm-forest)
 
 ; Show column numbers on the mode line
 (column-number-mode 1)
@@ -21,6 +21,9 @@
 (setq scroll-step 1)
 (setq inhibit-startup-message t)
 
+; Displays color constants as their actual colors
+(require 'rainbow-mode)
+
 ; Show tabs and trailing whitespace
 (require 'whitespace)
 (setq-default fill-column 80)
@@ -29,23 +32,27 @@
 (setq-default show-trailing-whitespace t)
 ; This is like the trailing-line setting for whitespace-style
 ; Except it uses preprend, so it doesn't clobber other faces
-(add-hook 'font-lock-mode-hook (function (lambda ()
+(add-hook 'font-lock-mode-hook (lambda ()
  (font-lock-add-keywords nil
    `((,(format
-	  "^\\([^\t\n]\\{%s\\}\\|[^\t\n]\\{0,%s\\}\t\\)\\{%d\\}%s\\(.+\\)$"
-	  tab-width (- tab-width 1)
+      "^\\([^\t\n]\\{%s\\}\\|[^\t\n]\\{0,%s\\}\t\\)\\{%d\\}%s\\(.+\\)$"
+      tab-width (- tab-width 1)
       (/ 80 tab-width)
-	  (let ((rem (% 80 tab-width)))
-	    (if (zerop rem)
-		""
-		(format ".\\{%d\\}" rem))))
-	 (2 'whitespace-line prepend)))
-   t))))
+      (let ((rem (% 80 tab-width)))
+        (if (zerop rem)
+        ""
+        (format ".\\{%d\\}" rem))))
+     (2 'whitespace-line prepend)))
+   t)
+ ;(rainbow-mode t)
+ (highlight-symbol-mode t)))
+;))
 
-; Displays color constants as their actual colors
-(require 'rainbow-mode)
-(setq-default rainbow-mode t)
-
+(require 'highlight-symbol)
+(global-set-key (kbd "C-<right>") 'highlight-symbol-next)
+(global-set-key (kbd "C-<left>") 'highlight-symbol-prev)
+(global-set-key [(shift meta r)] 'highlight-symbol-query-replace)
+(setq-default highlight-symbol-idle-delay 0.25)
 
 ;Disable the menubar (promotes good emacs memory :)
 ;(menu-bar-mode -1)

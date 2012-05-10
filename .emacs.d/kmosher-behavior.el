@@ -29,11 +29,11 @@
 
 (require 'uniquify)
 ; Uniquify buffer names. For when you have the same filname open.
-(setq uniquify-buffer-name-style 'reverse)   
-(setq uniquify-separator "/")   
-(setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified   
+(setq uniquify-buffer-name-style 'reverse)
+(setq uniquify-separator "/")
+(setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
 ; don't muck with special buffers (or Gnus mail buffers)
-(setq uniquify-ignore-buffers-re "^\\*") 
+(setq uniquify-ignore-buffers-re "^\\*")
 
 ;This handles whitespace a little better when having indentation and you kill a line.
 (defadvice kill-line (after kill-line-cleanup-whitespace activate compile)

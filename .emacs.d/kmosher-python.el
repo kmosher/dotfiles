@@ -42,7 +42,9 @@
 	(flymake-mode t)
 	(flyspell-prog-mode))))
 
-
+(require 'pymacs)
+;(pymacs-load "ropemacs" "rope-")
+;(setq ropemacs-enable-autoimport t)
 
 ; Befier source checking
 (setq py-pychecker-command "epylint")

@@ -5,19 +5,22 @@
 ; Add all the libraries under /extern
 (let ((default-directory "~/.emacs.d/extern/"))
   (setq load-path
-		(append
-		 (let ((load-path (copy-sequence load-path))) ;; Shadow
-		   (append 
-			(copy-sequence (normal-top-level-add-to-load-path '(".")))
-			(normal-top-level-add-subdirs-to-load-path)))
-		 load-path)))
+        (append
+         (let ((load-path (copy-sequence load-path))) ;; Shadow
+           (append
+            (copy-sequence (normal-top-level-add-to-load-path '(".")))
+            (normal-top-level-add-subdirs-to-load-path)))
+         load-path)))
 
-;; ; Third party libraries are stored in ~/.emacs.d/extern
-;; (let ((default-directory "~/.emacs.d/extern"))
-;;   (normal-top-level-add-to-load-path '("."))
-
-;; (progn (cd "~/.emacs.d/extern")
-;;        (normal-top-level-add-subdirs-to-load-path))
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
 
 ; Language-specific enhancements
 (load-library "kmosher-python")
@@ -25,6 +28,8 @@
 (load-library "kmosher-elisp")
 ;(load-library "kmosher-java")
 
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 ; Might as well control git with emacs too
 (load-library "kmosher-git")
@@ -70,15 +75,9 @@
   ;; If there is more than one, they won't work right.
  '(whitespace-tab ((t (:foreground "gray19"))))
  '(column-marker-1 ((t (:background "gray10"))))
- '(whitespace-line ((t (:background "gray10"))))
+ '(whitespace-line ((t (:background "gray5"))))
+ '(highlight-symbol-face (( ((class color) (background dark))
+							(:background "gray20"))
+						  (((class color) (background light))
+						   (:background "gray90"))))
 )
-
-;;; This was installed by package-install.el.
-;;; This provides support for the package system and
-;;; interfacing with ELPA, the package archive.
-;;; Move this code earlier if you want to reference
-;;; packages in your .emacs.
-(when
-	(load
-	 (expand-file-name "~/.emacs.d/elpa/package.el"))
-  (package-initialize))
