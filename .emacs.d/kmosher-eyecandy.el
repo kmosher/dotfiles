@@ -7,7 +7,7 @@
 (global-font-lock-mode 1)
 (color-theme-initialize)
 (color-theme-hober)
-;;(color-theme-kmosher)
+
 ; Show column numbers
 (column-number-mode 1)
 (setq-default fill-column 80)

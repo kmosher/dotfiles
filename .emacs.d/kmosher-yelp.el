@@ -9,7 +9,6 @@
 ;(setq-default py-smart-indentation nil)
 
 (require 'smart-tabs-mode)
-
 ; Setup smart tabs. Copied from http://www.emacswiki.org/emacs/SmartTabs
 (setq-default tab-width 4) ; or any other preferred value
 (setq cua-auto-tabify-rectangles nil)
@@ -30,20 +29,21 @@
 ; Python specific smart tabs stuff.
 (smart-tabs-advice py-indent-line py-indent-offset)
 (smart-tabs-advice py-indent-region py-indent-offset)
+
+(defun yelp-py-hook ()
+  (setq 
+   py-smart-indentation nil ; Don't try to guess tab width
+   ; Conditional tabiness
+   indent-tabs-mode (string-match "pg/yelp-main" (file-truename
+												  buffer-file-name)) 
+
+   smart-tabs-mode (string-match "pg/yelp-main" (file-truename
+												 buffer-file-name))
+   setq tab-width 4 ; Normal emacs tab-width
+   setq py-indent-offset 4 ; python-mode.el setting
+   ))
 ; A hook to load a bunch of tab stuff, with a regex guard for non-yelp non-tabbed projects
-(add-hook 'python-mode-hook
-          (lambda ()
-            (if (string-match "pg/python-gearman/" (file-truename buffer-file-name))
-                (progn
-                  (setq smart-tabs-mode nil)
-                  (setq indent-tabs-mode nil)
-                  )
-              (setq py-smart-indentation nil) ; Don't try to guess tab width
-              (setq indent-tabs-mode t) ; Use Tabs
-              (setq tab-width 4) ; Normal emacs tab-width
-              (setq py-indent-offset 4) ; python-mode.el setting
-              (smart-tabs-mode-enable)))
-) 
+(add-hook 'python-mode-hook 'yelp-py-hook) 
 
 ; Start us where we probably want to be
 (setq default-directory "~/pg/yelp-main")
