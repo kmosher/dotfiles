@@ -55,8 +55,8 @@
 (setq-default highlight-symbol-idle-delay 0.25)
 
 ;Disable the menubar (promotes good emacs memory :)
-;(menu-bar-mode -1)
-;(tool-bar-mode -1)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
 ;(scroll-bar-mode -1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

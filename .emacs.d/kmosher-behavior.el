@@ -39,10 +39,11 @@
 (defadvice kill-line (after kill-line-cleanup-whitespace activate compile)
   "cleanup whitespace on kill-line"
   (if (not (bolp))
-	  (delete-region (point) (progn (skip-chars-forward " \t") (point)))))
+      (delete-region (point) (progn (skip-chars-forward " \t") (point)))))
 
 (require 'auto-complete)
-(global-auto-complete-mode t)
+(require 'auto-complete-config)
+(ac-config-default)
 (global-set-key (kbd "M-/") 'auto-complete)
 
 ; Smarter buffer switching similar to ^R
