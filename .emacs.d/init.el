@@ -43,7 +43,7 @@
 ; Change how emacs behaves
 (load-library "kmosher-behavior")
 
-; CEDET custimizations
+; CEDET customizations
 ; (load-library "kmosher-cedet")
 
 ; Yelp specific customizations

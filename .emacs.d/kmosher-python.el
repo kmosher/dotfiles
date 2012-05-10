@@ -63,7 +63,7 @@
 ;; to speedup, just load it on demand
 ;(autoload 'pylookup-lookup "pylookup"
 ;  "Lookup SEARCH-TERM in the Python HTML indexes." t)
-;(autoload 'pylookup-update "pylookup" 
+;(autoload 'pylookup-update "pylookup"
 ;  "Run pylookup-update and create the database at `pylookup-db-file'." t)
 
 ;; Detect if inside triple quote or comment
