@@ -13,3 +13,6 @@
 [submodule ".emacs.d/extern/pymacs"]
 	path = .emacs.d/extern/pymacs
 	url = https://github.com/pinard/Pymacs.git
+[submodule ".emacs.d/extern/yasnippet"]
+	path = .emacs.d/extern/yasnippet
+	url = https://github.com/capitaomorte/yasnippet.git

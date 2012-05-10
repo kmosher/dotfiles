@@ -32,6 +32,12 @@
 (setq-default show-trailing-whitespace t)
 ; This is like the trailing-line setting for whitespace-style
 ; Except it uses preprend, so it doesn't clobber other faces
+(defface too-long-line
+  '((t :background "gray14"))
+  "Face for parts of a line that co over 80 chars."
+  )
+
+
 (add-hook 'font-lock-mode-hook (lambda ()
  (font-lock-add-keywords nil
    `((,(format
@@ -42,7 +48,7 @@
         (if (zerop rem)
         ""
         (format ".\\{%d\\}" rem))))
-     (2 'whitespace-line prepend)))
+     (2 'too-long-line prepend)))
    t)
  ;(rainbow-mode t)
  (highlight-symbol-mode t)))

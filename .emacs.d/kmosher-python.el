@@ -42,29 +42,26 @@
 	(flymake-mode t)
 	(flyspell-prog-mode))))
 
+; pymacs is an emacs<->python bridge, and rope is a refactoring lib
 (require 'pymacs)
 (pymacs-load "ropemacs" "rope-")
 (setq ropemacs-enable-autoimport t)
 
-; Befier source checking
+; Setup auto-complete to steal from rope
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-ropemacs-initialize)
+(add-hook 'python-mode-hook
+          (lambda ()
+			    (add-to-list 'ac-sources 'ac-source-ropemacs)))
+
+; Bicycle Repair Man
+(pymacs-load "bikeemacs" "brm-")
+(brm-init)
+
+; Beefier source checking
 (setq py-pychecker-command "epylint")
 (setq py-pychecker-command-args nil)
-
-; Lookup python docs with pylookup (http://taesoo.org/Opensource/Pylookup)
-;(setq pylookup-dir "~/emacs.d/pylookup")
-;(add-to-list 'load-path pylookup-dir)
-;; load pylookup when compile time
-;(eval-when-compile (require 'pylookup))
-
-;; set executable file and db file
-;(setq pylookup-program (concat pylookup-dir "/pylookup.py"))
-;(setq pylookup-db-file (concat pylookup-dir "/pylookup.db"))
-
-;; to speedup, just load it on demand
-;(autoload 'pylookup-lookup "pylookup"
-;  "Lookup SEARCH-TERM in the Python HTML indexes." t)
-;(autoload 'pylookup-update "pylookup"
-;  "Run pylookup-update and create the database at `pylookup-db-file'." t)
 
 ;; Detect if inside triple quote or comment
 (defsubst python-in-comment()

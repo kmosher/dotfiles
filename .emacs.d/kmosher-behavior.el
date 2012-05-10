@@ -46,7 +46,11 @@
 (ac-config-default)
 (global-set-key (kbd "M-/") 'auto-complete)
 
+(require 'yasnippet)
+(setq yas/snippet-dirs '("~/.emacs.d/extern/yasnippet/snippets"))
+(yas/global-mode 1)
+
+(global-set-key (kbd "C-c v") 'magit-status)
 ; Smarter buffer switching similar to ^R
 ; TODO: NOT BEING SMART
 ; (setq iswitchb-mode t)
-
