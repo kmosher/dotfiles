@@ -8,6 +8,7 @@
 ;(setq-default py-indent-offset 4)
 ;(setq-default py-smart-indentation nil)
 
+(defvar smart-tabs-mode nil) ; Fix a compiler warning
 (require 'smart-tabs-mode)
 ; Setup smart tabs. Copied from http://www.emacswiki.org/emacs/SmartTabs
 (setq-default tab-width 4) ; or any other preferred value
@@ -35,12 +36,12 @@
    py-smart-indentation nil ; Don't try to guess tab width
    ; Conditional tabiness
    indent-tabs-mode (string-match "pg/yelp-main" (file-truename
-												  buffer-file-name)) 
+												  buffer-file-name))
 
    smart-tabs-mode (string-match "pg/yelp-main" (file-truename
 												 buffer-file-name))
-   setq tab-width 4 ; Normal emacs tab-width
-   setq py-indent-offset 4 ; python-mode.el setting
+   tab-width 4 ; Normal emacs tab-width
+   py-indent-offset 4 ; python-mode.el setting
    ))
 ; A hook to load a bunch of tab stuff, with a regex guard for non-yelp non-tabbed projects
 (add-hook 'python-mode-hook 'yelp-py-hook) 

@@ -35,6 +35,13 @@
 ; don't muck with special buffers (or Gnus mail buffers)
 (setq uniquify-ignore-buffers-re "^\\*") 
 
+;This handles whitespace a little better when having indentation and you kill a line.
+(defadvice kill-line (after kill-line-cleanup-whitespace activate compile)
+  "cleanup whitespace on kill-line"
+  (if (not (bolp))
+	  (delete-region (point) (progn (skip-chars-forward " \t") (point)))))
+
+
 ; Spell checking
 ; NOTE: Flyspell mode is broken at the moment.
 ; (flyspell-prog-mode t)
