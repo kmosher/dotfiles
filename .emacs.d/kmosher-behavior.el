@@ -41,10 +41,9 @@
   (if (not (bolp))
 	  (delete-region (point) (progn (skip-chars-forward " \t") (point)))))
 
-
-; Spell checking
-; NOTE: Flyspell mode is broken at the moment.
-; (flyspell-prog-mode t)
+(require 'auto-complete)
+(global-auto-complete-mode t)
+(global-set-key (kbd "M-/") 'auto-complete)
 
 ; Smarter buffer switching similar to ^R
 ; TODO: NOT BEING SMART

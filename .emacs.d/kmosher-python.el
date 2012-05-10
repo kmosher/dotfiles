@@ -36,9 +36,12 @@
 (add-to-list 'flymake-allowed-file-name-masks
              '("\\.py\\'" flymake-pylint-init))
 
-; Load flymake on non-temp buffers
+; Load flymake and flyspell on non-temp buffers
 (add-hook 'python-mode-hook (lambda ()
-  (unless (eq buffer-file-name nil) (flymake-mode 1))))
+  (unless (eq buffer-file-name nil)
+	(flymake-mode t)
+	(flyspell-prog-mode))))
+
 
 
 ; Befier source checking

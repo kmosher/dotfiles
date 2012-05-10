@@ -2,15 +2,13 @@
 ;; Visual Nicities
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'color-theme)
-
-;(load-library "kmosher-color-theme")
 (global-font-lock-mode 1)
 (color-theme-initialize)
 (color-theme-hober)
 
-; Show column numbers
+; Show column numbers on the mode line
 (column-number-mode 1)
-(setq-default fill-column 80)
+
 ;;(setq auto-fill-mode 1)
 
 ; Show what's being selected
@@ -25,10 +23,10 @@
 
 ; Show tabs and trailing whitespace
 (require 'whitespace)
+(setq-default fill-column 80)
 (setq whitespace-style '(face tabs space-before-tab tab-mark empty))
 (global-whitespace-mode t)
 (setq-default show-trailing-whitespace t)
-
 ; This is like the trailing-line setting for whitespace-style
 ; Except it uses preprend, so it doesn't clobber other faces
 (add-hook 'font-lock-mode-hook (function (lambda ()
@@ -44,18 +42,15 @@
 	 (2 'whitespace-line prepend)))
    t))))
 
-
-; Highlight column 80
-(add-hook 'whitespace-mode-hook (lambda () (interactive) (column-marker-1 80)))
-(require 'column-marker)
+; Displays color constants as their actual colors
+(require 'rainbow-mode)
+(setq-default rainbow-mode t)
 
 
 ;Disable the menubar (promotes good emacs memory :)
 ;(menu-bar-mode -1)
 ;(tool-bar-mode -1)
 ;(scroll-bar-mode -1)
-
-(require 'rainbow-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Increase/Decrease font size on the fly

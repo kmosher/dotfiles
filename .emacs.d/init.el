@@ -21,7 +21,10 @@
 
 ; Language-specific enhancements
 (load-library "kmosher-python")
+(load-library "kmosher-shell")
+(load-library "kmosher-elisp")
 ;(load-library "kmosher-java")
+
 
 ; Might as well control git with emacs too
 (load-library "kmosher-git")
