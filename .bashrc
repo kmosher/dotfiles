@@ -3,7 +3,7 @@ export TERM=xterm-256color
 # for tmux: export 256color
 [ -n "$TMUX" ] && export TERM=screen-256color
 
-# This makes less -R work properly with the diffinator 
+# This makes less -R work properly with the diffinator
 export PYTHONIOENCODING=utf-8
 
 # Avoid succesive duplicates in the bash command history.
@@ -33,14 +33,16 @@ alias ipad='agenttmux attach -t ipad'
 # Make grep more user friendly by highlighting matches
 # and exclude grepping through .git folders.
 alias grep='grep --color=auto --exclude-dir=\.git'
-#alias fg='find -print0 | xargs -0 grep --color=always'
+alias ff='find -print0 | xargs -0 grep --color=always'
+
+#alias dropoff
 
 _scj() {
-	if [ -z $2 ]; then
-		COMPREPLY=($(find -L $HOME/pg/search_cluster -type f -printf "%P\n"))
-	else
-		COMPREPLY=($(find -L $HOME/pg/search_cluster -type f -name "$2*" -printf "%P\n"))
-	fi
+    if [ -z $2 ]; then
+        COMPREPLY=($(find -L $HOME/pg/search_cluster -type f -printf "%P\n"))
+    else
+        COMPREPLY=($(find -L $HOME/pg/search_cluster -type f -name "$2*" -printf "%P\n"))
+    fi
 } &&
 complete -F _scj scj
 
@@ -63,7 +65,7 @@ __git_ps1_yelp ()
     if [ -n "$g" ]; then
         local r
         local b
-		
+
         if [ -d "$g/../.dotest" ]; then
             r="|AM/REBASE"
             b="$(git symbolic-ref HEAD 2>/dev/null)"

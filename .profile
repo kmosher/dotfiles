@@ -1,6 +1,7 @@
 LOCAL=$HOME/.local
 
-export PATH=$LOCAL/bin:$PATH
+PATH=$LOCAL/bin:$PATH
+PATH=$PATH:$HOME/pg/yelp-main/tools/
 export PATH=$PATH:$LOCAL/lib/maven/bin
 
 #YourKit Java Profiler

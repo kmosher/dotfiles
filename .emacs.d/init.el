@@ -29,7 +29,7 @@
 ;(load-library "kmosher-java")
 
 (require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
 
 ; Might as well control git with emacs too
 (load-library "kmosher-git")
@@ -79,3 +79,7 @@
  '(highlight-symbol-face ((((class color) (background dark)) (:background "gray20")) (((class color) (background light)) (:background "gray90"))))
  '(region ((t (:background "#120"))))
  '(whitespace-tab ((t (:foreground "gray19")))))
+
+(put 'upcase-region 'disabled nil)
+
+(put 'downcase-region 'disabled nil)

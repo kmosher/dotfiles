@@ -35,7 +35,7 @@
 (defface too-long-line
   '((t :background "gray14"))
   "Face for parts of a line that co over 80 chars."
-  )
+)
 
 
 (add-hook 'font-lock-mode-hook (lambda ()

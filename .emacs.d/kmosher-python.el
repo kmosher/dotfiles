@@ -19,7 +19,7 @@
 ;(require 'adaptive-wrap-prefix)
 
 ;(add-hook 'python-mode-hook
-;	  (lambda () (srb-adaptive-wrap-mode t)))
+;     (lambda () (srb-adaptive-wrap-mode t)))
 
 ; Pyflakes on the fly with flymake
 (require 'flymake)
@@ -39,8 +39,8 @@
 ; Load flymake and flyspell on non-temp buffers
 (add-hook 'python-mode-hook (lambda ()
   (unless (eq buffer-file-name nil)
-	(flymake-mode t)
-	(flyspell-prog-mode))))
+    (flymake-mode t)
+    (flyspell-prog-mode))))
 
 ; pymacs is an emacs<->python bridge, and rope is a refactoring lib
 (require 'pymacs)
@@ -53,19 +53,24 @@
 (ac-ropemacs-initialize)
 (add-hook 'python-mode-hook
           (lambda ()
-			    (add-to-list 'ac-sources 'ac-source-ropemacs)))
+                (add-to-list 'ac-sources 'ac-source-ropemacs)))
 
 ; Bicycle Repair Man
-(pymacs-load "bikeemacs" "brm-")
-(brm-init)
+;(pymacs-load "bikeemacs" "brm-")
+;(brm-init)
 
 ; Beefier source checking
 (setq py-pychecker-command "epylint")
 (setq py-pychecker-command-args nil)
 
+; Setup ipython and get colors working. TAB completion is broke. Might want to
+; look into upgrading python-mode to fix this
+(setq-default py-shell-name "ipython")
+(setq ansi-color-for-comint-mode t)
+
 ;; Detect if inside triple quote or comment
 (defsubst python-in-comment()
-	(nth 4 (syntax-ppss))
+    (nth 4 (syntax-ppss))
 )
 
 ;; Autofill inside of comments
