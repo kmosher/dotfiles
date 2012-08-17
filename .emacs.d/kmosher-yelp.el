@@ -11,24 +11,8 @@
 (defvar smart-tabs-mode nil) ; Fix a compiler warning
 (require 'smart-tabs-mode)
 ; Setup smart tabs. Copied from http://www.emacswiki.org/emacs/SmartTabs
-(setq-default tab-width 4) ; or any other preferred value
-(setq cua-auto-tabify-rectangles nil)
-(defadvice align (around smart-tabs activate)
-  (let ((indent-tabs-mode nil)) ad-do-it))
-(defadvice align-regexp (around smart-tabs activate)
-  (let ((indent-tabs-mode nil)) ad-do-it))
-(defadvice indent-relative (around smart-tabs activate)
-  (let ((indent-tabs-mode nil)) ad-do-it))
-(defadvice indent-according-to-mode (around smart-tabs activate)
-  (let ((indent-tabs-mode indent-tabs-mode))
-    (if (memq indent-line-function
-              '(indent-relative
-                indent-relative-maybe))
-        (setq indent-tabs-mode nil))
-    ad-do-it))
-
-; Python specific smart tabs stuff.
 (smart-tabs-advice py-indent-line py-indent-offset)
+(smart-tabs-advice py-newline-and-indent py-indent-offset)
 (smart-tabs-advice py-indent-region py-indent-offset)
 
 (setq-default indent-tabs-mode nil)

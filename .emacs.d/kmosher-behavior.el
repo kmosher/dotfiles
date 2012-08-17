@@ -15,6 +15,7 @@
 
 ; For those heathen times when I want to scroll and click
 (xterm-mouse-mode t)
+(require 'mwheel)
 (mouse-wheel-mode t)
 
 ; Why whould you ever want to leave emacs?
