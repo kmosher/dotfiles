@@ -52,11 +52,13 @@ alias ec="emacsclient --alternate-editor='' -t "
 alias emc="emacsclient -n"
 EDITOR="emacsclient --alternate-editor='' -t"
 VISUAL="emacsclient --alternate-editor='' -t"
+SVN_EDITOR="emacsclient --alternate-editor='' -t"
 
 if [ -n "$INSIDE_EMACS" ]; then
     alias ec="emacsclient"
     EDITOR="emacsclient"
     VISUAL="emacsclient"
+    SVN_EDITOR="emacsclient"
 fi
 
 __git_ps1_yelp ()
@@ -78,138 +80,133 @@ __git_ps1_yelp ()
         elif [ -f "$g/MERGE_HEAD" ]; then
             r="|MERGING"
             b="$(git symbolic-ref HEAD 2>/dev/null)"
-			
-		elif [ -f "$g/rebase-merge/interactive" ]; then
-			r="|REBASE-i"
-			b="$(cat "$g/rebase-merge/head-name")"
-		elif [ -d "$g/rebase-merge" ]; then
-			r="|REBASE-m"
-			b="$(cat "$g/rebase-merge/head-name")"
-		else
-			if [ -d "$g/rebase-apply" ]; then
-				if [ -f "$g/rebase-apply/rebasing" ]; then
-					r="|REBASE"
-				elif [ -f "$g/rebase-apply/applying" ]; then
-					r="|AM"
-				else
-					r="|AM/REBASE"
-				fi
-			elif [ -f "$g/MERGE_HEAD" ]; then
-				r="|MERGING"
-			elif [ -f "$g/BISECT_LOG" ]; then
-				r="|BISECTING"
-			fi
+        elif [ -f "$g/rebase-merge/interactive" ]; then
+            r="|REBASE-i"
+            b="$(cat "$g/rebase-merge/head-name")"
+        elif [ -d "$g/rebase-merge" ]; then
+            r="|REBASE-m"
+            b="$(cat "$g/rebase-merge/head-name")"
+        else
+            if [ -d "$g/rebase-apply" ]; then
+                if [ -f "$g/rebase-apply/rebasing" ]; then
+                    r="|REBASE"
+                elif [ -f "$g/rebase-apply/applying" ]; then
+                    r="|AM"
+                else
+                    r="|AM/REBASE"
+                fi
+            elif [ -f "$g/MERGE_HEAD" ]; then
+                r="|MERGING"
+            elif [ -f "$g/BISECT_LOG" ]; then
+                r="|BISECTING"
+            fi
+            b="$(git symbolic-ref HEAD 2>/dev/null)" || {
 
-			b="$(git symbolic-ref HEAD 2>/dev/null)" || {
+                b="$(case "${GIT_PS1_DESCRIBE_STYLE-}" in
+                    (contains)
+                        git describe --contains HEAD ;;
+                    (branch)
+                        git describe --contains --all HEAD ;;
+                    (describe)
+                        git describe HEAD ;;
+                    (* | default)
+                        git describe --exact-match HEAD ;;
+                    esac 2>/dev/null)" ||
+                b="$(cut -c1-7 "$g/HEAD" 2>/dev/null)..." ||
+                b="unknown"
+                b="($b)"
+            }
+        fi
+        local w
+        local i
+        local s
+        local u
+        local c
 
-				b="$(
-                                case "${GIT_PS1_DESCRIBE_STYLE-}" in
-                                (contains)
-                                        git describe --contains HEAD ;;
-                                (branch)
-                                        git describe --contains --all HEAD ;;
-                                (describe)
-                                        git describe HEAD ;;
-                                (* | default)
-                                        git describe --exact-match HEAD ;;
-                                esac 2>/dev/null)" ||
+        if [ "true" = "$(git rev-parse --is-inside-git-dir 2>/dev/null)" ]; then
+            if [ "true" = "$(git rev-parse --is-bare-repository 2>/dev/null)" ]; then
+                c="BARE:"
+            else
+                b="GIT_DIR!"
+            fi
+        elif [ "true" = "$(git rev-parse --is-inside-work-tree 2>/dev/null)" ]; then
+            if [ -n "${GIT_PS1_SHOWDIRTYSTATE-}" ]; then
+                if [ "$(git config --bool bash.showDirtyState)" != "false" ]; then
+                    git diff --no-ext-diff --ignore-submodules \
+                        --quiet --exit-code || w="*"
+                    if git rev-parse --quiet --verify HEAD >/dev/null; then
+                        git diff-index --cached --quiet \
+                            --ignore-submodules HEAD -- || i="+"
+                    else
+                        i="#"
+                    fi
+                fi
+            fi
+            if [ -n "${GIT_PS1_SHOWSTASHSTATE-}" ]; then
+                git rev-parse --verify refs/stash >/dev/null 2>&1 && s="$"
+            fi
 
-								b="$(cut -c1-7 "$g/HEAD" 2>/dev/null)..." ||
-								b="unknown"
-								b="($b)"
-			}
-		fi
+            if [ -n "${GIT_PS1_SHOWUNTRACKEDFILES-}" ]; then
+                if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+                    u="%"
+                fi
+            fi
+        fi
 
-		local w
-		local i
-		local s
-		local u
-		local c
-
-		if [ "true" = "$(git rev-parse --is-inside-git-dir 2>/dev/null)" ]; then
-			if [ "true" = "$(git rev-parse --is-bare-repository 2>/dev/null)" ]; then
-				c="BARE:"
-			else
-				b="GIT_DIR!"
-			fi
-		elif [ "true" = "$(git rev-parse --is-inside-work-tree 2>/dev/null)" ]; then
-			if [ -n "${GIT_PS1_SHOWDIRTYSTATE-}" ]; then
-				if [ "$(git config --bool bash.showDirtyState)" != "false" ]; then
-					git diff --no-ext-diff --ignore-submodules \
-						--quiet --exit-code || w="*"
-					if git rev-parse --quiet --verify HEAD >/dev/null; then
-						git diff-index --cached --quiet \
-							--ignore-submodules HEAD -- || i="+"
-					else
-						i="#"
-					fi
-				fi
-			fi
-			if [ -n "${GIT_PS1_SHOWSTASHSTATE-}" ]; then
-				git rev-parse --verify refs/stash >/dev/null 2>&1 && s="$"
-			fi
-
-			if [ -n "${GIT_PS1_SHOWUNTRACKEDFILES-}" ]; then
-				if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-					u="%"
-				fi
-			fi
-		fi
-
-		if [ -n "${1-}" ]; then
-			printf "$1" "$c${b##refs/heads/}$w$i$s$u$r"
-		else
-			printf " (%s)" "$c${b##refs/heads/}$w$i$s$u$r"
-		fi
-	fi
+        if [ -n "${1-}" ]; then
+            printf "$1" "$c${b##refs/heads/}$w$i$s$u$r"
+        else
+            printf " (%s)" "$c${b##refs/heads/}$w$i$s$u$r"
+        fi
+    fi
 }
 
 __git_colorize_ps1_yelp()
 {
-	local BRIGHT=1
-	local DIM=0
+    local BRIGHT=1
+    local DIM=0
 
-	local FOREGROUND=3
-	local BACKGROUND=4
+    local FOREGROUND=3
+    local BACKGROUND=4
 
-	#    DIM         BRIGHT
-	local BLACK=0  # Dark Gray
-	local RED=1    # Light Red
-	local GREEN=2  # Light Green
-	local BROWN=3  # Yellow
-	local BLUE=4   # Light Blue
-	local PURPLE=5 # Light Purple
-	local CYAN=6   # Light Cyan
-	local GRAY=7   # White
+    #     DIM        BRIGHT
+    local BLACK=0  # Dark Gray
+    local RED=1    # Light Red
+    local GREEN=2  # Light Green
+    local BROWN=3  # Yellow
+    local BLUE=4   # Light Blue
+    local PURPLE=5 # Light Purple
+    local CYAN=6   # Light Cyan
+    local GRAY=7   # White
 
-	local branch=$(git-branch-name 2>/dev/null)
-	local remote_url
+    local branch=$(git-branch-name 2>/dev/null)
+    local remote_url
 
-	# Determine the remote repo for the given branch
-	if [ -n "${branch}" ] && local remote_name=$(git config --get "branch.${branch}.remote"); then
-		remote_url=$(git config --get "remote.${remote_name}.url")
-	else
-		remote_url=$(git config --get "remote.origin.url")
-	fi
-	# Red for master
-	if [[ "${branch}" == "master" ]]; then
-		if [ "${remote_url}" = "git.yelpcorp.com:yelp-main" ]; then
-			printf "\e[${BRIGHT};${BACKGROUND}${RED}m"
-		else
-			printf "\e[${BRIGHT};${FOREGROUND}${RED}m"
-		fi
-	# Gray for the default branch made by dev-clone
-	elif [[ "${branch}" == "gone_fishin" && "${remote_name}" == "canon" ]]; then
-			printf "\e[${DIM};${FOREGROUND}${GRAY}m"
-	# Green if you're pointed at your own public repo
-	elif [[ "${remote_url}" == "git.yelpcorp.com:devs/${USER}" ]]; then
-		printf "\e[${BRIGHT};${FOREGROUND}${GREEN}m"
-	# Purple if you're pointed to someone else's repo (I'd put yellow, but it conflicts with the path name)
-	elif [[ "${remote_url}" == git.yelpcorp.com:devs/* ]]; then
-		printf "\e[${DIM};${FOREGROUND}${PURPLE}m"
-	else
-		printf "\e[${BRIGHT};${FOREGROUND}${CYAN}m"
-	fi
+    # Determine the remote repo for the given branch
+    if [ -n "${branch}" ] && local remote_name=$(git config --get "branch.${branch}.remote"); then
+        remote_url=$(git config --get "remote.${remote_name}.url")
+    else
+        remote_url=$(git config --get "remote.origin.url")
+    fi
+    # Red for master
+    if [[ "${branch}" == "master" ]]; then
+        if [ "${remote_url}" = "git.yelpcorp.com:yelp-main" ]; then
+            printf "\e[${BRIGHT};${BACKGROUND}${RED}m"
+        else
+            printf "\e[${BRIGHT};${FOREGROUND}${RED}m"
+        fi
+    # Gray for the default branch made by dev-clone
+    elif [[ "${branch}" == "gone_fishin" && "${remote_name}" == "canon" ]]; then
+        printf "\e[${DIM};${FOREGROUND}${GRAY}m"
+    # Green if you're pointed at your own public repo
+    elif [[ "${remote_url}" == "git.yelpcorp.com:devs/${USER}" ]]; then
+        printf "\e[${BRIGHT};${FOREGROUND}${GREEN}m"
+    # Purple if you're pointed to someone else's repo (I'd put yellow, but it conflicts with the path name)
+    elif [[ "${remote_url}" == git.yelpcorp.com:devs/* ]]; then
+        printf "\e[${DIM};${FOREGROUND}${PURPLE}m"
+    else
+        printf "\e[${BRIGHT};${FOREGROUND}${CYAN}m"
+    fi
 }
 
 # My own PS1, I changed the hostname to purple instead of green so it doesn't conflict with the branchname
