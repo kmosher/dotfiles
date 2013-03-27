@@ -50,9 +50,9 @@ complete -F _scj scj
 # Connects to emacs if it's running. Otherwise starts it
 alias ec="emacsclient --alternate-editor='' -t "
 alias emc="emacsclient -n"
-EDITOR="emacsclient --alternate-editor='' -t"
-VISUAL="emacsclient --alternate-editor='' -t"
-SVN_EDITOR="emacsclient --alternate-editor='' -t"
+export EDITOR="emacsclient --alternate-editor='' -t"
+export VISUAL="emacsclient --alternate-editor='' -t"
+export SVN_EDITOR="emacsclient --alternate-editor='' -t"
 
 if [ -n "$INSIDE_EMACS" ]; then
     alias ec="emacsclient"
