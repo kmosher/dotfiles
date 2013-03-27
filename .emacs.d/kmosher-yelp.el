@@ -8,6 +8,9 @@
 ;(setq-default py-indent-offset 4)
 ;(setq-default py-smart-indentation nil)
 
+; Emacs modes for debian files
+(require 'dpkg-dev-el)
+
 (defvar smart-tabs-mode nil) ; Fix a compiler warning
 (require 'smart-tabs-mode)
 ; Setup smart tabs. Copied from http://www.emacswiki.org/emacs/SmartTabs
