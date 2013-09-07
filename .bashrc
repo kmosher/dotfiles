@@ -32,7 +32,7 @@ export _JAVA_OPTIONS=-Xmx2g
 alias ipad='agenttmux attach -t ipad'
 # Make grep more user friendly by highlighting matches
 # and exclude grepping through .git folders.
-alias grep='grep --color=auto --exclude-dir=\.git'
+alias grep='grep --color=auto --exclude-dir=\.git --exclude-dir=.svn'
 alias ff='find -print0 | xargs -0 grep --color=always'
 
 #alias dropoff
