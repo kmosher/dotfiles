@@ -16,3 +16,6 @@
 [submodule ".emacs.d/extern/yasnippet"]
 	path = .emacs.d/extern/yasnippet
 	url = https://github.com/capitaomorte/yasnippet.git
+[submodule ".emacs.d/extern/puppet-syntax-emacs"]
+	path = .emacs.d/extern/puppet-syntax-emacs
+	url = https://github.com/puppetlabs/puppet-syntax-emacs.git
