@@ -26,6 +26,7 @@
 (load-library "kmosher-python")
 (load-library "kmosher-shell")
 (load-library "kmosher-elisp")
+(load-library "kmosher-puppet")
 ;(load-library "kmosher-java")
 
 (require 'yaml-mode)

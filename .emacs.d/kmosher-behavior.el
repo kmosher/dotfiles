@@ -56,5 +56,4 @@
 ; TODO: NOT BEING SMART
 ; (setq iswitchb-mode t)
 
-(setq puppet-indent-level 2)
 (setq ruby-indent-level 4)
