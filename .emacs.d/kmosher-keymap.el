@@ -32,6 +32,12 @@
 (global-set-key (kbd "C-c r") 'mc/reverse-regions)
 (global-set-key (kbd "C-c 1") 'mc/insert-numbers)
 
+; Taken from https://github.com/technomancy/better-defaults
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "C-M-s") 'isearch-forward)
+(global-set-key (kbd "C-M-r") 'isearch-backward)
 
 ;Make page up and page down a whole lot nicer
 ;(global-set-key "\C-v"	   'pager-page-down)
