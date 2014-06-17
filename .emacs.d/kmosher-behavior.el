@@ -18,10 +18,6 @@
 (require 'mwheel)
 (mouse-wheel-mode t)
 
-; Why whould you ever want to leave emacs?
-(require 'multi-term)
-(setq multi-term-program "/bin/bash")
-
 ; Overwrite selection
 (delete-selection-mode t)
 
@@ -48,12 +44,9 @@
 (global-set-key (kbd "M-/") 'auto-complete)
 
 (require 'yasnippet)
-(setq yas/snippet-dirs '("~/.emacs.d/extern/yasnippet/snippets"))
 (yas/global-mode 1)
 
 (global-set-key (kbd "C-c v") 'magit-status)
 ; Smarter buffer switching similar to ^R
 ; TODO: NOT BEING SMART
 ; (setq iswitchb-mode t)
-
-; (setq ruby-indent-level 4)
