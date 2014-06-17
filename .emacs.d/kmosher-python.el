@@ -31,7 +31,7 @@
         (local-file (file-relative-name
                      temp-file
                      (file-name-directory buffer-file-name))))
-   (list "pychecker" (list local-file))))
+   (list "flake8" (list local-file))))
 
 (add-to-list 'flymake-allowed-file-name-masks
              '("\\.py\\'" flymake-pylint-init))
@@ -43,17 +43,17 @@
     (flyspell-prog-mode))))
 
 ; pymacs is an emacs<->python bridge, and rope is a refactoring lib
-(require 'pymacs)
-(pymacs-load "ropemacs" "rope-")
-(setq ropemacs-enable-autoimport t)
+;(require 'pymacs)
+;(pymacs-load "ropemacs" "rope-")
+;(setq ropemacs-enable-autoimport t)
 
 ; Setup auto-complete to steal from rope
 (require 'auto-complete)
 (require 'auto-complete-config)
-(ac-ropemacs-initialize)
-(add-hook 'python-mode-hook
-          (lambda ()
-                (add-to-list 'ac-sources 'ac-source-ropemacs)))
+;(ac-ropemacs-initialize)
+;(add-hook 'python-mode-hook
+;          (lambda ()
+;                (add-to-list 'ac-sources 'ac-source-ropemacs)))
 
 ; Bicycle Repair Man
 ;(pymacs-load "bikeemacs" "brm-")

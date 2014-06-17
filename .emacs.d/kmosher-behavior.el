@@ -56,4 +56,4 @@
 ; TODO: NOT BEING SMART
 ; (setq iswitchb-mode t)
 
-(setq ruby-indent-level 4)
+; (setq ruby-indent-level 4)

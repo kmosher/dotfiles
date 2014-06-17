@@ -24,10 +24,10 @@
   (setq
    py-smart-indentation nil ; Don't try to guess tab width
    ; Conditional tabiness
-   indent-tabs-mode (string-match "pg\\|srv" (file-truename
-                                              buffer-file-name))
-   smart-tabs-mode (string-match "pg\\|srv" (file-truename
-                                             buffer-file-name))
+;   indent-tabs-mode (string-match "pg\\|srv" (file-truename
+;                                              buffer-file-name))
+;   smart-tabs-mode (string-match "pg\\|srv" (file-truename
+;                                             buffer-file-name))
    tab-width 4 ; Normal emacs tab-width
    py-indent-offset 4 ; python-mode.el setting
    ))
@@ -35,4 +35,4 @@
 (add-hook 'python-mode-hook 'yelp-py-hook)
 
 ; Start us where we probably want to be
-(setq default-directory "~/pg/yelp-main")
+(setq default-directory "~/")
