@@ -1,4 +1,4 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;Changes to the default key behavior
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -10,14 +10,28 @@
 (define-key comint-mode-map [up] 'comint-previous-matching-input-from-input)
 
 (setq comint-completion-autolist t ;list possibilities on partial
-				   ;completion
-      comint-completion-recexact nil ;use shortest compl. if
-				     ;characters cannot be added
+                                   ;completion
+    comint-completion-recexact nil ;use shortest compl. if
+                                   ;characters cannot be added
 )
 
-; Convenient multiterm functions
-(global-set-key (kbd "C-c t") 'multi-term-next)
-(global-set-key (kbd "C-c T") 'multi-term) ;; create a new one
+
+; See https://github.com/magnars/multiple-cursors.el
+(global-set-key (kbd "C-c n") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c p") 'mc/mark-previous-like-this)
+
+(global-set-key (kbd "C-c f") 'mc/mark-next-word-like-this)
+(global-set-key (kbd "C-c b") 'mc/mark-previous-word-like-this)
+
+(global-set-key (kbd "C-c a") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-c C-c") 'mc/edit-lines)
+(global-set-key (kbd "C-c e") 'mc/mark-more-like-this-extended)
+(global-set-key (kbd "C-c m") 'mc/mark-all-dwim)
+
+(global-set-key (kbd "C-c s") 'mc/sort-regions)
+(global-set-key (kbd "C-c r") 'mc/reverse-regions)
+(global-set-key (kbd "C-c 1") 'mc/insert-numbers)
+
 
 ;Make page up and page down a whole lot nicer
 ;(global-set-key "\C-v"	   'pager-page-down)
