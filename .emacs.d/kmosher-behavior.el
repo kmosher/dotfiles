@@ -57,3 +57,6 @@
 
 (require 'yasnippet)
 (yas/global-mode 1)
+
+; Add support for ag highlights
+(setq ag-highlight-search t)

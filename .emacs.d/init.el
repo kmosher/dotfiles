@@ -40,6 +40,10 @@
 ; Auto-complete
 (load-library "kmosher-ac")
 
+; On the fly linting
+(load-library "kmosher-flycheck")
+
+
 ; Yelp specific customizations
 (load-library "kmosher-yelp")
 
