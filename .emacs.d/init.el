@@ -2,6 +2,7 @@
 ; Adds all my mini-libraries in .emacs.d
 (add-to-list 'load-path user-emacs-directory)
 
+; Setup package management stuff
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 (require 'pallet)
@@ -18,14 +19,11 @@
 
 
 ; Language-specific enhancements
-(load-library "kmosher-python")
-(load-library "kmosher-shell")
 (load-library "kmosher-elisp")
 (load-library "kmosher-puppet")
-;(load-library "kmosher-java")
-
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
+(load-library "kmosher-python")
+(load-library "kmosher-shell")
+(load-library "kmosher-yaml")
 
 ; Might as well control git with emacs too
 (load-library "kmosher-git")
@@ -45,23 +43,9 @@
 ; Yelp specific customizations
 (load-library "kmosher-yelp")
 
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(safe-local-variable-values (quote ((python-indent . 4) (sh-indent-comment . t)))))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(ac-candidate-face ((t (:background "gray5"))))
- '(ac-selection-face ((t (:background "gray8" :foreground "white"))))
- '(column-marker-1 ((t (:background "gray10"))))
- '(highlight-symbol-face ((((class color) (background dark)) (:background "gray20")) (((class color) (background light)) (:background "gray90"))))
- '(region ((t (:background "#120"))))
- '(whitespace-tab ((t (:foreground "gray19")))))
+; Locate custom-set variables elsewhere
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(load custom-file)
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)

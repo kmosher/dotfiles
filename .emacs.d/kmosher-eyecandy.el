@@ -9,8 +9,6 @@
 ; Show column numbers on the mode line
 (column-number-mode 1)
 
-;;(setq auto-fill-mode 1)
-
 ; Show what's being selected
 (transient-mark-mode 1)
 
@@ -64,6 +62,14 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 ;(scroll-bar-mode -1)
+
+; Slightly prettier modeline
+(require 'powerline)
+(powerline-default-theme)
+
+; Pretty symbols
+(require 'pretty-mode)
+(global-pretty-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Increase/Decrease font size on the fly
