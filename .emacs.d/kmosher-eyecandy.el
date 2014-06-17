@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Visual Nicities
+;; Visual Niceties
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'color-theme)
+;(require 'color-theme)
 (global-font-lock-mode 1)
 ;(color-theme-initialize)
 ;(color-theme-calm-forest)
@@ -48,7 +48,6 @@
         (format ".\\{%d\\}" rem))))
      (2 'too-long-line prepend)))
    t)
- ;(rainbow-mode t)
  (highlight-symbol-mode t)))
 ;))
 
@@ -64,12 +63,13 @@
 ;(scroll-bar-mode -1)
 
 ; Slightly prettier modeline
-(require 'powerline)
 (powerline-default-theme)
 
 ; Pretty symbols
-(require 'pretty-mode)
 (global-pretty-mode t)
+
+; Show colors as colors
+(rainbow-mode)
 
 ; Matching rainbow delimiters
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
