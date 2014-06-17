@@ -37,6 +37,9 @@
 ; Change how emacs behaves
 (load-library "kmosher-behavior")
 
+; Cleanup mode-line clutter
+(load-library "kmosher-diminish")
+
 ; Auto-complete
 (load-library "kmosher-ac")
 

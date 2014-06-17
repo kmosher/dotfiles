@@ -4,6 +4,7 @@
 
 ;Up-down arrows will cycle through history
 (require 'comint)
+
 (define-key comint-mode-map (kbd "M-") 'comint-next-input)
 (define-key comint-mode-map (kbd "M-") 'comint-previous-input)
 (define-key comint-mode-map [down] 'comint-next-matching-input-from-input)
@@ -40,5 +41,5 @@
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
 ; https://github.com/magnars/expand-region.el
-(require 'expand-region)
-(global-set-key (kbd "C-@") 'er/expand-region)
+;(require 'expand-region)
+(global-set-key (kbd "C-M-SPC") 'er/expand-region)
