@@ -3,8 +3,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'color-theme)
 (global-font-lock-mode 1)
-(color-theme-initialize)
-(color-theme-calm-forest)
+;(color-theme-initialize)
+;(color-theme-calm-forest)
 
 ; Show column numbers on the mode line
 (column-number-mode 1)
@@ -32,7 +32,7 @@
 ; Except it uses preprend, so it doesn't clobber other faces
 (defface too-long-line
   '((t :background "gray14"))
-  "Face for parts of a line that co over 80 chars."
+  "Face for parts of a line that go over 80 chars."
 )
 
 
@@ -71,23 +71,5 @@
 (require 'pretty-mode)
 (global-pretty-mode t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Increase/Decrease font size on the fly
-;;; Taken from: http://is.gd/iaAo
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun kmosher/increase-font-size ()
-  (interactive)
-  (set-face-attribute 'default
-                      nil
-                      :height
-                      (ceiling (* 1.10
-                                  (face-attribute 'default :height)))))
-(defun kmosher/decrease-font-size ()
-  (interactive)
-  (set-face-attribute 'default
-                      nil
-                      :height
-                      (floor (* 0.9
-                                  (face-attribute 'default :height)))))
-(global-set-key (kbd "C-+") 'kmosher/increase-font-size)
-(global-set-key (kbd "C--") 'kmosher/decrease-font-size)
+; Matching rainbow delimiters
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)

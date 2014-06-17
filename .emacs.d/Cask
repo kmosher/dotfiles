@@ -3,6 +3,7 @@
 
 (depends-on "ag")
 (depends-on "auto-complete")
+(depends-on "base16-theme")
 (depends-on "bind-key")
 (depends-on "cask")
 (depends-on "color-theme")
@@ -37,6 +38,7 @@
 (depends-on "projectile")
 (depends-on "puppet-mode")
 (depends-on "puppetfile-mode")
+(depends-on "rainbow-delimiters")
 (depends-on "rainbow-mode")
 (depends-on "s")
 (depends-on "smart-tabs-mode")
