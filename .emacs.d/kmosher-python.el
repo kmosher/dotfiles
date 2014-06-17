@@ -11,35 +11,12 @@
   (define-key py-mode-map [(meta b)] 'py-backward-into-nomenclature))
 )
 
-; Pyflakes on the fly with flymake
-(require 'flymake)
-(require 'flymake-cursor)
-
-(defun flymake-pylint-init ()
- (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                    'flymake-create-temp-inplace))
-        (local-file (file-relative-name
-                     temp-file
-                     (file-name-directory buffer-file-name))))
-   (list "flake8" (list local-file))))
-
-(add-to-list 'flymake-allowed-file-name-masks
-             '("\\.py\\'" flymake-pylint-init))
 
 ; Load flymake and flyspell on non-temp buffers
 (add-hook 'python-mode-hook (lambda ()
   (unless (eq buffer-file-name nil)
-    (flymake-mode t)
     (flyspell-prog-mode))))
 
-
-; Setup auto-complete to steal from rope
-(require 'auto-complete)
-(require 'auto-complete-config)
-
-; Beefier source checking
-(setq py-pychecker-command "epylint")
-(setq py-pychecker-command-args nil)
 
 ; Setup ipython and get colors working. TAB completion is broke. Might want to
 ; look into upgrading python-mode to fix this

@@ -39,6 +39,9 @@
 ; Change how emacs behaves
 (load-library "kmosher-behavior")
 
+; Auto-complete
+(load-library "kmosher-ac")
+
 ; Yelp specific customizations
 (load-library "kmosher-yelp")
 
