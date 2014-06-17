@@ -1,7 +1,3 @@
-; A more civilized python for a more civilized age!
-; XXX Dead as of a python-mode.el upgrade
-;(require 'ipython)
-
 ; Emacs has TWO competing python modes, talk about confusing
 ; this is the one maintained by the python community
 (require 'python-mode)
@@ -14,12 +10,6 @@
   (define-key py-mode-map [(meta f)] 'py-forward-into-nomenclature)
   (define-key py-mode-map [(meta b)] 'py-backward-into-nomenclature))
 )
-
-; Adaptaive line wrapping
-;(require 'adaptive-wrap-prefix)
-
-;(add-hook 'python-mode-hook
-;     (lambda () (srb-adaptive-wrap-mode t)))
 
 ; Pyflakes on the fly with flymake
 (require 'flymake)
@@ -42,22 +32,10 @@
     (flymake-mode t)
     (flyspell-prog-mode))))
 
-; pymacs is an emacs<->python bridge, and rope is a refactoring lib
-;(require 'pymacs)
-;(pymacs-load "ropemacs" "rope-")
-;(setq ropemacs-enable-autoimport t)
 
 ; Setup auto-complete to steal from rope
 (require 'auto-complete)
 (require 'auto-complete-config)
-;(ac-ropemacs-initialize)
-;(add-hook 'python-mode-hook
-;          (lambda ()
-;                (add-to-list 'ac-sources 'ac-source-ropemacs)))
-
-; Bicycle Repair Man
-;(pymacs-load "bikeemacs" "brm-")
-;(brm-init)
 
 ; Beefier source checking
 (setq py-pychecker-command "epylint")
