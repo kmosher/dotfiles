@@ -3,10 +3,17 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        iy-go-to-char--command
+        jump-char-process-char
         kill-region
         ))
 
 (setq mc/cmds-to-run-once
       '(
+        isearch-abort
+        isearch-forward-regexp
+        isearch-other-meta-char
+        isearch-other-meta-char
+        isearch-printing-char
         yank-rectangle
         ))
