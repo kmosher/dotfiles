@@ -12,7 +12,7 @@
 )
 
 
-; Load flymake and flyspell on non-temp buffers
+; Load flyspell on non-temp buffers
 (add-hook 'python-mode-hook (lambda ()
   (unless (eq buffer-file-name nil)
     (flyspell-prog-mode))))

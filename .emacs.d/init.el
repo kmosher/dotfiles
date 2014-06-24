@@ -8,7 +8,7 @@
 (require 'pallet)
 
 ; Add all the libraries under /extern
-(let ((default-directory "~/.emacs.d/extern/"))
+(let ((default-directory (concat user-emacs-directory "extern")))
   (setq load-path
         (append
          (let ((load-path (copy-sequence load-path))) ;; Shadow
@@ -17,6 +17,15 @@
             (normal-top-level-add-subdirs-to-load-path)))
          load-path)))
 
+; Add all the themes in /themes
+(let ((default-directory (concat user-emacs-directory "themes")))
+  (setq custom-theme-load-path
+        (append
+         (let ((custom-theme-load-path (copy-sequence custom-theme-load-path)))
+           (append
+            (copy-sequence (normal-top-level-add-to-load-path '(".")))
+            (normal-top-level-add-subdirs-to-load-path)))
+         custom-theme-load-path)))
 
 ; Language-specific enhancements
 (load-library "kmosher-elisp")
@@ -37,18 +46,17 @@
 ; Change how emacs behaves
 (load-library "kmosher-behavior")
 
-; Cleanup mode-line clutter
-(load-library "kmosher-diminish")
-
 ; Auto-complete
 (load-library "kmosher-ac")
 
 ; On the fly linting
 (load-library "kmosher-flycheck")
 
-
 ; Yelp specific customizations
 (load-library "kmosher-yelp")
+
+; Cleanup mode-line clutter
+(load-library "kmosher-diminish")
 
 ; Locate custom-set variables elsewhere
 (setq custom-file (concat user-emacs-directory "custom.el"))

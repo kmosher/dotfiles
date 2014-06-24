@@ -18,8 +18,8 @@
 
 
 ; See https://github.com/magnars/multiple-cursors.el
-(global-set-key (kbd "C-c n") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-c p") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-n") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c C-p") 'mc/mark-previous-like-this)
 
 (global-set-key (kbd "C-c f") 'mc/mark-next-word-like-this)
 (global-set-key (kbd "C-c b") 'mc/mark-previous-word-like-this)
@@ -41,5 +41,13 @@
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
 ; https://github.com/magnars/expand-region.el
+(global-set-key (kbd "M-i") 'er/expand-region)
+(global-set-key (kbd "M-I") 'er/contract-region)
+
+; https://github.com/magnars/expand-region.el
 ;(require 'expand-region)
-(global-set-key (kbd "C-M-SPC") 'er/expand-region)
+(global-set-key (kbd "M-c") 'iy-go-to-char)
+(global-set-key (kbd "M-C") 'iy-go-to-char-backward)
+
+; Magit entry point
+(global-set-key (kbd "C-c v") 'iy-go-to-char-backward)
