@@ -6,10 +6,12 @@
         iy-go-to-char--command
         jump-char-process-char
         kill-region
+        py-newline-and-indent
         ))
 
 (setq mc/cmds-to-run-once
       '(
+        describe-key
         isearch-abort
         isearch-forward-regexp
         isearch-other-meta-char
