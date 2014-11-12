@@ -60,3 +60,6 @@
 
 ; Add support for ag highlights
 (setq ag-highlight-search t)
+
+; Don't use tabs by default
+(setq-default indent-tabs-mode nil)
