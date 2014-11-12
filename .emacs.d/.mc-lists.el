@@ -6,7 +6,10 @@
         iy-go-to-char--command
         jump-char-process-char
         kill-region
+        puppet-interpolate
         py-newline-and-indent
+        yaml-electric-dash-and-dot
+        yas-expand
         ))
 
 (setq mc/cmds-to-run-once
