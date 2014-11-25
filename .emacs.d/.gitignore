@@ -1,6 +1,7 @@
 .cask
 ac-comphist.dat
 auto-save-list
+auto-saves
 backups
 places
 venv

@@ -5,13 +5,17 @@
 ; Store backups in their own directory instead of littering the
 ; whole filesystem with goddamn ~ files.
 (setq
+   ; hide files in .emacs.d
+   auto-save-file-name-transforms   ; Auto-save edited files
+    `((".*" ,(concat user-emacs-directory "auto-saves/") t))
+   backup-directory-alist   ; don't litter my fs tree
+    `((".*" . ,(concat user-emacs-directory "backups")))
    backup-by-copying t      ; don't clobber symlinks
-   backup-directory-alist ; don't litter my fs tree
-    `(("." . ,(concat user-emacs-directory "backups")))
    delete-old-versions t
    kept-new-versions 6
    kept-old-versions 2
    version-control t)       ; use versioned backups
+
 
 ; For those heathen times when I want to scroll and click
 (xterm-mouse-mode t)
