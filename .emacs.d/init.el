@@ -1,11 +1,16 @@
 ; Congratulations! You're customizing your editor
-; Adds all my mini-libraries in .emacs.d
-(add-to-list 'load-path user-emacs-directory)
+
+;;; Code:
 
 ; Setup package management stuff
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
+; Pallet keeps the cask file in sync with packages
 (require 'pallet)
+(pallet-mode t)
+
+; Adds all my mini-libraries in .emacs.d
+(add-to-list 'load-path (concat user-emacs-directory "personal"))
 
 ; Add all the libraries under /extern
 (let ((default-directory (concat user-emacs-directory "extern")))
@@ -64,3 +69,5 @@
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+;;; init.el ends here

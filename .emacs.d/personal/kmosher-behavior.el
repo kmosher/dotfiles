@@ -56,10 +56,13 @@
 (global-set-key (kbd "M-/") 'auto-complete)
 
 (require 'yasnippet)
-(yas/global-mode 1)
+(yas-global-mode)
 
 ; Add support for ag highlights
 (setq ag-highlight-search t)
 
 ; Don't use tabs by default
 (setq-default indent-tabs-mode nil)
+
+(require 'bracketed-paste)
+(bracketed-paste-enable)

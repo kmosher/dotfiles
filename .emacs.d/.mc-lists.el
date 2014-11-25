@@ -15,6 +15,7 @@
 (setq mc/cmds-to-run-once
       '(
         describe-key
+        ido-switch-buffer
         isearch-abort
         isearch-forward-regexp
         isearch-other-meta-char
