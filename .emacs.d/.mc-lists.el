@@ -7,6 +7,7 @@
         jump-char-process-char
         kill-region
         puppet-interpolate
+        py-electric-comment
         py-newline-and-indent
         yaml-electric-dash-and-dot
         yas-expand
