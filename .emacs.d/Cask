@@ -13,6 +13,7 @@
 (depends-on "color-theme-solarized")
 (depends-on "column-marker")
 (depends-on "dash")
+(depends-on "delight")
 (depends-on "dockerfile-mode")
 (depends-on "drag-stuff")
 (depends-on "epl")

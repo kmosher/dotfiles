@@ -61,7 +61,7 @@
 (load-library "kmosher-yelp")
 
 ; Cleanup mode-line clutter
-(load-library "kmosher-diminish")
+(load-library "kmosher-modeline")
 
 ; Locate custom-set variables elsewhere
 (setq custom-file (concat user-emacs-directory "custom.el"))
