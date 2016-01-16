@@ -3,7 +3,8 @@ ac-comphist.dat
 auto-save-list
 auto-saves
 backups
+eshell
+ido.last
 places
 venv
 url/cookies
-eshell/
