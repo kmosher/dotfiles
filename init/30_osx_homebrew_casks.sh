@@ -14,16 +14,30 @@ brew cask info this-is-somewhat-annoying 2>/dev/null
 # Homebrew casks
 casks=(
   # Applications
+  adium
+  alfred
+  alinof-timer
   aquamacs
   battle-net
+  colloquy
   dropbox
   firefox
+  gfxcardstatus
+  gimp
   google-chrome
+  google-photos-backup
+  hipchat
+  inkscape
   iterm2
+  mumble
+  skype
   slack
   spotify
   steam
+  stay
   the-unarchiver
+  torbrowser
+  tunnelblick
   xquartz
   yubico-authenticator
   yubikey-personalization-gui
