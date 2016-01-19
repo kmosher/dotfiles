@@ -22,6 +22,13 @@
 (require 'mwheel)
 (mouse-wheel-mode t)
 
+; Run xterm-init hooks during init for screen* as well
+; Notably, the hook I want is the one that sends the correct codes
+; to turn on mouse tracking.
+(defadvice terminal-init-screen (after run-xterm-hooks-for-screen activate)
+  (run-hooks 'terminal-init-xterm-hook)
+)
+
 ; Overwrite selection
 (delete-selection-mode t)
 
