@@ -1,6 +1,6 @@
-[submodule ".oh-my-zsh"]
-	path = .oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "vendor/cask"]
 	path = vendor/cask
 	url = https://github.com/cask/cask.git
+[submodule "vendor/zprezto"]
+	path = vendor/zprezto
+	url = https://github.com/sorin-ionescu/prezto.git
