@@ -12,6 +12,8 @@ brew_tap_kegs
 # Homebrew recipes
 recipes=(
   bash
+  docker
+  docker-machine
   emacs
   git
   git-extras

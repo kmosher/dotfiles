@@ -30,11 +30,13 @@ casks=(
   inkscape
   iterm2
   mumble
+  puppet
   skype
   slack
   spotify
   steam
   stay
+  terraform
   the-unarchiver
   torbrowser
   tunnelblick
