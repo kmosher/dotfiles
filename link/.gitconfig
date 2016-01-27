@@ -3,3 +3,9 @@
 	email = kmosher@yelp.com
 [push]
 	default = simple
+[alias]
+	co = checkout
+	br = branch
+	pl = pull
+	ps = push
+	st = status
