@@ -23,6 +23,7 @@ recipes=(
   nmap
   openssh
   python
+  python3
   the_silver_searcher
   tmux
   tree
