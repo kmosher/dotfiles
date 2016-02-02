@@ -9,3 +9,5 @@
 	pl = pull
 	ps = push
 	st = status
+[core]
+	editor = emacsclient -t --alternate-editor=''
