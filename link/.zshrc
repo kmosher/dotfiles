@@ -4,6 +4,15 @@ ZSH=${ZDOTDIR:-$HOME}/.zsh.d/
 # custom directory for completion scripts
 fpath=(~/.zsh.d/completions  $fpath)
 
+# The following lines were added by compinstall
+zstyle ':completion:*' completer _complete _ignored _approximate
+zstyle :compinstall filename '/Users/kmosher/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+
 for config in $ZSH/*.zsh; do
     source $config
 done
