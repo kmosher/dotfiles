@@ -23,7 +23,9 @@ alias emc='emacsclient -n'
 
 alias pbers='puppet-bundle exec rake spec'
 
-alias tmux='~/.local/bin/agenttmux'
+if [ -x ~/.local/bin/agenttmux ]; then
+   alias tmux='~/.local/bin/agenttmux'
+fi
 
 function pssh() {
    host=$1.prod.yelpcorp.com
