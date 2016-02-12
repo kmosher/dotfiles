@@ -11,15 +11,18 @@ brew_tap_kegs
 
 # Homebrew recipes
 recipes=(
+  awscli
   bash
   docker
   docker-machine
   emacs
   git
   git-extras
+  gpg
   htop-osx
   hub
   imagemagick
+  keybase
   nmap
   openssh
   python
@@ -27,6 +30,7 @@ recipes=(
   the_silver_searcher
   tmux
   tree
+  vault
   wget
   zsh
 )
