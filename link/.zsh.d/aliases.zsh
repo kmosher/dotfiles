@@ -23,6 +23,8 @@ alias emc='emacsclient -n'
 
 alias pbers='puppet-bundle exec rake spec'
 
+alias ag='ag --path-to-agignore=~/.agignore'
+
 if [ -x ~/.local/bin/agenttmux ]; then
    alias tmux='~/.local/bin/agenttmux'
 fi
