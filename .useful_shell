@@ -1,0 +1,94 @@
+# Get the biggest pg users
+ps aux | grep -Eo '[p]gconf-[^-/]*(-[^/]*)?' | sort | uniq | grep -Eo '[p]gconf-[^-/]*' | uniq -c | sort -n | awk -v x=5 '$1 >= x'
+
+for pg in $(ps aux | grep -Eo '[p]gconf-[^-/]*(-[^/]*)?' | sort | uniq | grep hbai); do echo $pg; ps aux | grep $pg | awk '{rss+=$5; vmem=$6} END{print rss/1024" "vmem/1024}'; done
+
+# Finding details on configured services
+find \! -path *.svn* -a -type f | xargs grep "yelp_service {" | egrep -o '"[^"]*"' | sort | uniq
+
+# Find users lurking as push on a machine
+ps -u push --sort start_time -o pid= -o start_time= -o cmd= | grep -v 'sshd:' | sed 's/[ \t][ \t]*/ /g' | while read pid time cmd; do name=$(sudo strings /proc/$pid/environ 2> /dev/null | sed '/^GIT_COMMITER_NAME/{s/.*=//;p};d'); [ -n "$name" -a "$name" != "push" ] && echo -e "$pid\t$time\t$name\t$cmd"; done | column -t -s $'\t'
+
+# Rsync ANYTHING
+sudo SSH_AUTH_SOCK=$SSH_AUTH_SOCK rsync -avzhP -e="ssh -A -l $USER" --rsync-path='sudo rsync'
+
+# Make a gif
+SOURCE=source.gif
+TARGET=captioned.gif
+FONT=/Library/Fonts/Impact.ttf
+
+convert "$SOURCE" -pointsize 38 -gravity center -font "$FONT" -stroke black -fill white -strokewidth 3 -draw 'text 0,80 "Do you even containerize, bro?"' -loop 0 $TARGET
+
+# Ack all checks matching a regex
+ssh-list-async nagios -- "sudo nagios_command.pl -c svcack -s 'language_models'--comment 'kmosher: birthing pains'"
+
+# Grab a file from the puppet file server
+sudo curl --cert /var/lib/puppet/ssl/certs/$(hostname -f).pem \
+     --key /var/lib/puppet/ssl/private_keys/$(hostname -f).pem \
+     --cacert /var/lib/puppet/ssl/certs/ca.pem \
+     --header 'Accept: raw' \
+     https://puppet.local.yelpcorp.com:8140/masterbranch/file_content/modules/deployment/yelp-main/nail/sys/deploy/yelpdeployd
+
+# Grab a node's catalog
+sudo curl --cert /var/lib/puppet/ssl/certs/$(hostname -f).pem \
+  --key /var/lib/puppet/ssl/private_keys/$(hostname -f).pem \
+  --cacert /var/lib/puppet/ssl/certs/ca.pem \
+  --header 'Accept: pson' \
+  https://puppet.local.yelpcorp.com:8140/masterbranch/catalog/$(hostname -f)
+
+
+# SysRq : HELP : loglevel(0-9) reboot(b) crash(c) terminate-all-tasks(e) memory-full-oom-kill(f) kill-all-tasks(i) thaw-filesystems(j) sak(k) show-backtrace-all-active-cpus(l) show-memory-usage(m) nice-all-RT-tasks(n) poweroff(o) show-registers(p) show-all-timers(q) unraw(r) sync(s) show-task-states(t) unmount(u) show-blocked-tasks(w) dump-ftrace-buffer(z)
+echo 'b' | sudo tee /proc/sysrq-trigger
+
+
+# Pull from the local puppet catalog
+jq "." /var/lib/puppet/client_data/catalog/`hostname -f`.json
+
+# Find hosts connected to a server
+for proc in $(sudo ss -t 'sport = :16666' | tail -n +2 | awk '{ print $5 }'); do host ${proc%:*}; timeout 3 find_remote_proc $proc; echo '-------------'; done
+
+# For when people call their servers ephemeral
+"But what does that mean--'ephemeral'?" repeated the little prince, who never in his life had let go of a question, once he had asked it.
+"It means, 'which is in danger of speedy disappearance.'"
+"Is my f̶l̶o̶w̶e̶r̶ server in danger of speedy disappearance?"
+"Certainly it is."
+
+
+## STRACE ##
+# Slow the target command and print details for each syscall:
+strace command
+
+# Slow the target PID and print details for each syscall:
+strace -p PID
+
+# Slow the target PID and any newly created child process, printing syscall details:
+strace -fp PID
+
+# Slow the target PID and record syscalls, printing a summary:
+strace -cp PID
+
+# Slow the target PID and trace open() syscalls only:
+strace -eopen -p PID
+
+# Slow the target PID and trace open() and stat() syscalls only:
+strace -eopen,stat -p PID
+
+# Slow the target PID and trace connect() and accept() syscalls only:
+strace -econnect,accept -p PID
+
+# Slow the target command and see what other programs it launches (slow them too!):
+strace -qfeexecve command
+
+# Slow the target PID and print time-since-epoch with (distorted) microsecond resolution:
+strace -ttt -p PID
+
+# Slow the target PID and print syscall durations with (distorted) microsecond resolution:
+strace -T -p PID
+
+# Dig through pslogs looking for the day when memory peaked
+ssh-list `mco find -W runtimeenv=prod -C role::service_machine` -- 'bzgrep -e "transit" /var/log/ps/ps-2016012[0-9]-13.bz2 | awk '\''{if ($6 > 100000
+0) {print; exit}}'\'' | cut -d" " -f1-30'
+
+# Dig through pslogs, looking for the first timestamp memory started ticking up.
+# The paste joins the ps-line with its header
+ssh-list `mco find -C role::yelp_webserver` -- 'bzgrep -e "Tue,|hacheck" /var/log/ps/ps-20151103-16.bz2 | paste -d" " - - | awk '\''BEGIN {curr = 0} { if (curr==0) {curr=$11} if ($11 != curr) {curr = $11; print; exit}}'\'' | cut -d" " -f1-17' | sort -n -k2 -t':'
