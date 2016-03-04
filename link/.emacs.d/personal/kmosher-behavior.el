@@ -77,3 +77,7 @@
 
 (require 'bracketed-paste)
 (bracketed-paste-enable)
+
+; Stop emacs trying to transparently (de/en)crypt gpg files
+(require 'epa-file)
+(epa-file-disable)
