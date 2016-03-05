@@ -23,18 +23,19 @@ convert "$SOURCE" -pointsize 38 -gravity center -font "$FONT" -stroke black -fil
 ssh-list-async nagios -- "sudo nagios_command.pl -c svcack -s 'language_models'--comment 'kmosher: birthing pains'"
 
 # Grab a file from the puppet file server
-sudo curl --cert /var/lib/puppet/ssl/certs/$(hostname -f).pem \
-     --key /var/lib/puppet/ssl/private_keys/$(hostname -f).pem \
-     --cacert /var/lib/puppet/ssl/certs/ca.pem \
-     --header 'Accept: raw' \
-     https://puppet.local.yelpcorp.com:8140/masterbranch/file_content/modules/deployment/yelp-main/nail/sys/deploy/yelpdeployd
+function pupconf() { sudo puppet config print --section agent $1; }
+sudo curl --cert $(pupconf hostcert) \
+    --key $(pupconf hostprivkey) \
+    --cacert $(pupconf localcacert) \
+    --header 'Accept: raw' \
+    https://$(pupconf server):$(pupconf masterport)/$(pupconf environment)/file_content/modules/git-beta/eat24hours_allowed_push.pub
 
 # Grab a node's catalog
-sudo curl --cert /var/lib/puppet/ssl/certs/$(hostname -f).pem \
-  --key /var/lib/puppet/ssl/private_keys/$(hostname -f).pem \
-  --cacert /var/lib/puppet/ssl/certs/ca.pem \
-  --header 'Accept: pson' \
-  https://puppet.local.yelpcorp.com:8140/masterbranch/catalog/$(hostname -f)
+sudo curl --cert $(pupconf hostcert) \
+    --key $(pupconf hostprivkey) \
+    --cacert $(pupconf localcacert) \
+    --header 'Accept: pson' \
+    https://$(pupconf server):$(pupconf masterport)/$(pupconf environment)/catalog/$(pupconf certname)
 
 
 # SysRq : HELP : loglevel(0-9) reboot(b) crash(c) terminate-all-tasks(e) memory-full-oom-kill(f) kill-all-tasks(i) thaw-filesystems(j) sak(k) show-backtrace-all-active-cpus(l) show-memory-usage(m) nice-all-RT-tasks(n) poweroff(o) show-registers(p) show-all-timers(q) unraw(r) sync(s) show-task-states(t) unmount(u) show-blocked-tasks(w) dump-ftrace-buffer(z)
