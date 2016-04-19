@@ -1,6 +1,7 @@
 [user]
 	name = Keith Mosher
 	email = kmosher@yelp.com
+	signingkey = 67FDD423
 [push]
 	default = simple
 [alias]
