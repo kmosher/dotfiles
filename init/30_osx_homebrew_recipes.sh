@@ -14,6 +14,7 @@ recipes=(
   awscli
   bash
   docker
+  docker-compose
   docker-machine
   emacs
   git
