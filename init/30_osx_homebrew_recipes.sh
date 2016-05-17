@@ -19,6 +19,7 @@ recipes=(
   emacs
   git
   git-extras
+  golang
   gpg
   htop-osx
   hub
