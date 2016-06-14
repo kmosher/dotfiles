@@ -22,6 +22,7 @@ recipes=(
   golang
   gpg
   htop-osx
+  httpie
   hub
   imagemagick
   keybase
