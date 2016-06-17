@@ -29,6 +29,7 @@ casks=(
   hipchat
   inkscape
   iterm2
+  kitematic
   mumble
   puppet
   skype
