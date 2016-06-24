@@ -21,6 +21,7 @@ casks=(
   battle-net
   colloquy
   disk-inventory-x
+  docker
   dropbox
   firefox
   gfxcardstatus
@@ -30,9 +31,10 @@ casks=(
   hipchat
   inkscape
   iterm2
+  java
   kitematic
   mumble
-  puppet
+  puppet-agent
   skype
   slack
   spotify
@@ -48,6 +50,7 @@ casks=(
   vagrant
   virtualbox
   vlc
+  wireshark
 )
 
 # Install Homebrew casks.

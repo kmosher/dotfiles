@@ -13,9 +13,6 @@ brew_tap_kegs
 recipes=(
   awscli
   bash
-  docker
-  docker-compose
-  docker-machine
   emacs
   git
   git-extras
