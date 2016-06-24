@@ -19,6 +19,7 @@ recipes=(
   emacs
   git
   git-extras
+  git-lfs
   golang
   gpg
   htop-osx

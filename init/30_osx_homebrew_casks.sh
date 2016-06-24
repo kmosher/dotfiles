@@ -20,6 +20,7 @@ casks=(
   aquamacs
   battle-net
   colloquy
+  disk-inventory-x
   dropbox
   firefox
   gfxcardstatus
