@@ -26,6 +26,7 @@ casks=(
   firefox
   gfxcardstatus
   gimp
+  gist
   google-chrome
   google-photos-backup
   hipchat
