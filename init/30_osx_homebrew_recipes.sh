@@ -34,6 +34,7 @@ recipes=(
   vault
   wget
   zsh
+  zsh-syntax-highlighting
 )
 
 brew_install_recipes
