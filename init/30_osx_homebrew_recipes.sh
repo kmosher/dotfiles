@@ -11,7 +11,6 @@ brew_tap_kegs
 
 # Homebrew recipes
 recipes=(
-  awscli
   bash
   emacs
   git
@@ -32,6 +31,7 @@ recipes=(
   tmux
   tree
   vault
+  watch
   wget
   zsh
   zsh-syntax-highlighting

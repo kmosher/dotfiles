@@ -6,6 +6,9 @@
         iy-go-to-char--command
         jump-char-process-char
         kill-region
+        picture-backward-clear-column
+        picture-backward-column
+        picture-move-down
         puppet-interpolate
         py-electric-comment
         py-newline-and-indent
@@ -22,5 +25,6 @@
         isearch-other-meta-char
         isearch-other-meta-char
         isearch-printing-char
+        picture-move-up
         yank-rectangle
         ))
