@@ -13,6 +13,7 @@
 (depends-on "color-theme-sanityinc-tomorrow")
 (depends-on "color-theme-solarized")
 (depends-on "column-marker")
+(depends-on "csv-mode")
 (depends-on "dash")
 (depends-on "delight")
 (depends-on "dockerfile-mode")
