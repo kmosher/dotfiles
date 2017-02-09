@@ -35,3 +35,5 @@ See URL `http://puppetlabs.com/'."
 (if (not (fboundp 'x-hide-tip))
     (defun x-hide-tip ())
   )
+
+(set-variable flycheck-python-pycompile-executable "python3")
