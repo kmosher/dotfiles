@@ -36,4 +36,4 @@ See URL `http://puppetlabs.com/'."
     (defun x-hide-tip ())
   )
 
-(set-variable flycheck-python-pycompile-executable "python3")
+(setq flycheck-python-pycompile-executable "python3")
