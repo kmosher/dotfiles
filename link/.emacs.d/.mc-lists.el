@@ -26,5 +26,6 @@
         isearch-other-meta-char
         isearch-printing-char
         picture-move-up
+        yaml-electric-backspace
         yank-rectangle
         ))

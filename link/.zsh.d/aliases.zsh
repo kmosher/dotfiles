@@ -25,6 +25,8 @@ alias pbers='puppet-bundle exec rake spec'
 
 alias ag='ag --path-to-ignore=~/.agignore'
 
+alias gphpr='git push origin HEAD; hub pull-request -o'
+
 if [ -x ~/.local/bin/agenttmux ]; then
    alias tmux='~/.local/bin/agenttmux'
 fi
