@@ -18,33 +18,28 @@ casks=(
   alfred
   alinof-timer
   aquamacs
-  battle-net
   colloquy
   disk-inventory-x
-  docker
   dropbox
   firefox
   gfxcardstatus
   gimp
-  gist
   google-chrome
   google-photos-backup
-  hipchat
   inkscape
   iterm2
   java
-  kitematic
-  mumble
+  keybase
   puppet-agent
-  skype
+  race-for-the-galaxy
+  sketchup
   slack
   spotify
   steam
   stay
   terraform
-  the-unarchiver
   torbrowser
-  tunnelblick
+  the-unarchiver
   xquartz
   yubico-authenticator
   yubikey-personalization-gui
