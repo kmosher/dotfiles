@@ -1,6 +1,6 @@
 # Prepend to $PATH
 export GOPATH="$HOME/golang"
-path[1,0]=($HOME/.cask/bin/ $HOME/.local/bin $HOME/bin $GOPATH/bin /opt/puppet-omnibus/embedded/bin)
+path[1,0]=($HOME/.cask/bin $HOME/.local/bin $HOME/bin $GOPATH/bin /opt/puppet-omnibus/embedded/bin)
 export PATH
 # These break sensu, and other rubby crap
 # export GEM_HOME=vendor/gem
