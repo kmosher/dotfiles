@@ -24,7 +24,6 @@ recipes=(
   httpie
   hub
   imagemagick
-  keybase
   nmap
   openssh
   packer
@@ -39,6 +38,7 @@ recipes=(
   vault
   watch
   wget
+  yubikey-personalization
   zsh
   zsh-syntax-highlighting
 )
