@@ -12,7 +12,9 @@ brew_tap_kegs
 # Homebrew recipes
 recipes=(
   bash
+  cask  # This is Cask for Emacs, unrelated to homebrew
   emacs
+  gist
   git
   git-extras
   git-lfs
@@ -25,8 +27,12 @@ recipes=(
   keybase
   nmap
   openssh
+  packer
   python
   python3
+  ruby
+  sqlite
+  terraform
   the_silver_searcher
   tmux
   tree
