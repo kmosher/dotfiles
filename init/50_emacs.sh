@@ -1,1 +1,1 @@
-~/.cask/bin/cask --path ~/.emacs.d/
+~/.cask/bin/cask install --verbose --path ~/.emacs.d/
