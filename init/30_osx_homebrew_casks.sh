@@ -13,6 +13,7 @@ brew cask info this-is-somewhat-annoying 2>/dev/null
 
 # Homebrew casks
 casks=(
+  1password
   # Applications
   adium
   # Using site install
