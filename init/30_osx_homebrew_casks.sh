@@ -15,7 +15,8 @@ brew cask info this-is-somewhat-annoying 2>/dev/null
 casks=(
   # Applications
   adium
-  alfred
+  # Using site install
+  #  alfred
   alinof-timer
   aquamacs
   colloquy
@@ -24,7 +25,8 @@ casks=(
   firefox
   gfxcardstatus
   gimp
-  google-chrome
+  # Using site install
+  #  google-chrome
   inkscape
   iterm2
   java
