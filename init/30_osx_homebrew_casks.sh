@@ -20,6 +20,7 @@ casks=(
   #  alfred
   alinof-timer
   aquamacs
+  bartender
   colloquy
   disk-inventory-x
   dropbox
@@ -33,6 +34,7 @@ casks=(
   java
   keka
   keybase
+  oversight
   puppet-agent
   race-for-the-galaxy
   sketchup

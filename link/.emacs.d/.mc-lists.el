@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        indent-for-tab-command
         iy-go-to-char--command
         jump-char-process-char
         kill-region
