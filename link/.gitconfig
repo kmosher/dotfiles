@@ -11,6 +11,8 @@
 	ps = push
 	st = status
 	wc = whatchanged
+	# git git git git git git
+	git = !exec git
 	identity = "! git config user.name \"$(git config user.$1.name)\"; git config user.email \"$(git config user.$1.email)\"; :"
 [core]
 	editor = emacsclient -t --alternate-editor=''
