@@ -24,6 +24,7 @@ recipes=(
   httpie
   hub
   imagemagick
+  jq
   nmap
   openssh
   packer
