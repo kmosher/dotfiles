@@ -1,7 +1,7 @@
 # ls colors
 autoload colors; colors;
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
-#export LS_COLORS
+eval $(dircolors -b $HOME/.zsh.d/dircolors)
 
 # Enable ls colors
 if [ "$DISABLE_LS_COLORS" != "true" ]
