@@ -48,6 +48,12 @@ export TERM=xterm-256color
 # for tmux: export 256color
 [ -n "$TMUX" ] && export TERM=screen-256color
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
-ZSH_HIGHLIGHT_STYLES[default]='fg=blue'
+if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
+    ZSH_HIGHLIGHT_STYLES[default]='fg=blue'
+elif [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
+    ZSH_HIGHLIGHT_STYLES[default]='fg=blue'
+fi
