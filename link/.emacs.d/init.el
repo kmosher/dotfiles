@@ -39,6 +39,9 @@
             (normal-top-level-add-subdirs-to-load-path)))
          custom-theme-load-path)))
 
+; Change how emacs behaves
+(load-library "kmosher-behavior")
+
 ; Language-specific enhancements
 (load-library "kmosher-elisp")
 (load-library "kmosher-puppet")
@@ -54,9 +57,6 @@
 
 ; Key Rebindings
 (load-library "kmosher-keymap")
-
-; Change how emacs behaves
-(load-library "kmosher-behavior")
 
 ; Auto-complete
 (load-library "kmosher-ac")
