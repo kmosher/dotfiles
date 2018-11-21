@@ -1,6 +1,6 @@
 [user]
 	name = Keith Mosher
-	email = kmosher@yelp.com
+	email = keith.mosher@gmail.com
 	signingkey = 67FDD423
 [push]
 	default = simple
@@ -25,3 +25,6 @@
 [user "public"]
 	name = Keith Mosher
 	email = keith.mosher@gmail.com
+[credential]
+	helper = !aws codecommit credential-helper $@
+	UseHttpPath = true
