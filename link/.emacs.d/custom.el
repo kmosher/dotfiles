@@ -17,7 +17,7 @@
  '(flycheck-pos-tip-display-errors-tty-function (quote kmosher-popup-flycheck-errors))
  '(package-selected-packages
    (quote
-    (csv-mode lentic xterm-color yasnippet web-mode vcl-mode use-package terraform-mode smex smartparens smart-tabs-mode salt-mode rhtml-mode rainbow-mode rainbow-delimiters puppet-mode projectile prodigy pretty-mode powershell powerline popwin pallet org-jira nyan-mode multiple-cursors magit-svn json-mode js2-mode iy-go-to-char idle-highlight-mode htmlize highlight-symbol go-mode gitignore-mode gitconfig-mode gitattributes-mode flycheck-pos-tip flycheck-color-mode-line flycheck-cask expand-region exec-path-from-shell drag-stuff dockerfile-mode delight column-marker color-theme-solarized color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized coffee-mode bracketed-paste base16-theme auto-complete ag)))
+    (company company-lsp lsp-mode lsp-ui lsp-vue vue-mode csv-mode lentic xterm-color yasnippet web-mode vcl-mode use-package terraform-mode smex smartparens smart-tabs-mode salt-mode rhtml-mode rainbow-mode rainbow-delimiters puppet-mode projectile prodigy pretty-mode powershell powerline popwin pallet org-jira nyan-mode multiple-cursors magit-svn json-mode js2-mode iy-go-to-char idle-highlight-mode htmlize highlight-symbol go-mode gitignore-mode gitconfig-mode gitattributes-mode flycheck-pos-tip flycheck-color-mode-line flycheck-cask expand-region exec-path-from-shell drag-stuff dockerfile-mode delight column-marker color-theme-solarized color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized coffee-mode bracketed-paste base16-theme auto-complete ag)))
  '(safe-local-variable-values (quote ((python-indent . 4) (sh-indent-comment . t))))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
