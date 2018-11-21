@@ -6,7 +6,8 @@ is_termux || return 1
 
 # Homebrew recipes
 pkgs=(
-#  cask  # This is Cask for Emacs, unrelated to homebrew
+    #  cask  # This is Cask for Emacs, unrelated to homebrew
+  coreutils
   curl
   emacs
   git
