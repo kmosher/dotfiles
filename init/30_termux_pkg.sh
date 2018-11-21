@@ -13,11 +13,13 @@ pkgs=(
   git
   htop
   jq
+  make
   man
   nodejs
   openssh
   openssl
   python
+  python2
   silversearcher-ag
   termux-api
   # termux-exec will be needed before #!/usr works
