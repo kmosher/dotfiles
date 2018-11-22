@@ -6,17 +6,20 @@ is_termux || return 1
 
 # Homebrew recipes
 pkgs=(
-#  cask  # This is Cask for Emacs, unrelated to homebrew
+    #  cask  # This is Cask for Emacs, unrelated to homebrew
+  coreutils
   curl
   emacs
   git
   htop
   jq
+  make
   man
   nodejs
   openssh
   openssl
   python
+  python2
   silversearcher-ag
   termux-api
   # termux-exec will be needed before #!/usr works
