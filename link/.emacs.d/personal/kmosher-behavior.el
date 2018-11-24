@@ -51,8 +51,7 @@
 (setq uniquify-ignore-buffers-re "^\\*")
 
 ; Restore cursor position in killed buffers
-(require 'saveplace)
-(setq-default save-place t)
+(save-place-mode 1)
 (setq save-place-file (concat user-emacs-directory "places"))
 
 ; This handles whitespace a little better when having indentation and you kill a line.
