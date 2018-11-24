@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: Single File Component
+# key: scaffold
+# --
+
+<template>
+
+</template>
+
+<script>
+  export default {
+
+  }
+</script>
+
+<style scoped>
+
+</style>
