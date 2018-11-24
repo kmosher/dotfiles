@@ -1,3 +1,6 @@
 ; Setup auto-complete to steal from rope
-(require 'auto-complete)
-(require 'auto-complete-config)
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+
+(require 'company-lsp)
+(push 'company-lsp company-backends)

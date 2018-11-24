@@ -60,11 +60,6 @@
   (if (not (bolp))
       (delete-region (point) (progn (skip-chars-forward " \t") (point)))))
 
-(require 'auto-complete)
-(require 'auto-complete-config)
-(ac-config-default)
-(global-set-key (kbd "M-/") 'auto-complete)
-
 (require 'yasnippet)
 (yas-global-mode)
 

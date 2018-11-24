@@ -12,6 +12,3 @@
 
 (require 'lsp-ui)
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
-
-(require 'company-lsp)
-(push 'company-lsp company-backends)
