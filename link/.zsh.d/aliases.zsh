@@ -6,6 +6,8 @@ alias po='popd'
 alias ...='cd ../..'
 alias -- -='cd -'
 
+alias grep='grep --color=auto'
+
 # Super user
 alias _='sudo'
 alias please='sudo'
@@ -31,10 +33,4 @@ if [ -x ~/.local/bin/agenttmux ]; then
    alias tmux='~/.local/bin/agenttmux'
 fi
 
-function pssh() {
-   host=$1.prod.yelpcorp.com
-   shift
-   ssh "$host" "$@"
-}
-compdef pssh=ssh
 compdef wwpd=ssh
