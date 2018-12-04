@@ -25,9 +25,9 @@
 ; Show tabs and trailing whitespace
 (require 'whitespace)
 (setq-default fill-column 80)
-(setq whitespace-style '(face tabs space-before-tab tab-mark empty))
+(setq whitespace-style '(face tabs space-before-tab tab-mark empty trailing))
 (global-whitespace-mode t)
-(setq-default show-trailing-whitespace t)
+; (setq-default show-trailing-whitespace t)
 ; This is like the trailing-line setting for whitespace-style
 ; Except it uses preprend, so it doesn't clobber other faces
 (defface too-long-line
