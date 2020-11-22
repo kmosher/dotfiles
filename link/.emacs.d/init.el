@@ -49,7 +49,7 @@
 (load-library "kmosher-shell")
 (load-library "kmosher-yaml")
 (load-library "kmosher-js")
-(load-library "kmosher-vue")
+;(load-library "kmosher-vue")
 
 ; Might as well control git with emacs too
 (load-library "kmosher-git")

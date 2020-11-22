@@ -20,7 +20,7 @@
 (setq inhibit-startup-message t)
 
 ; Displays color constants as their actual colors
-(require 'rainbow-mode)
+;(require 'rainbow-mode)
 
 ; Show tabs and trailing whitespace
 (require 'whitespace)
@@ -69,7 +69,7 @@
 (global-pretty-mode t)
 
 ; Show colors as colors
-(rainbow-mode)
+;(rainbow-mode)
 
 ; Matching rainbow delimiters
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+;(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
