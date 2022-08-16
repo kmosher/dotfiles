@@ -1,6 +1,3 @@
-[submodule "vendor/cask"]
-	path = vendor/cask
-	url = https://github.com/cask/cask.git
 [submodule "vendor/zprezto"]
 	path = vendor/zprezto
 	url = https://github.com/sorin-ionescu/prezto.git
