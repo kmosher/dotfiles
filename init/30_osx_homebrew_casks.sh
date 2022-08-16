@@ -5,7 +5,7 @@ is_osx || return 1
 [[ ! "$(type -P brew)" ]] && e_error "Brew casks need Homebrew to install." && return 1
 
 # Ensure the cask keg and recipe are installed.
-kegs=(caskroom/cask caskroom/drivers)
+kegs=()
 brew_tap_kegs
 
 # Hack to show the first-run brew-cask password prompt immediately.
@@ -13,44 +13,35 @@ brew cask info this-is-somewhat-annoying 2>/dev/null
 
 # Homebrew casks
 casks=(
-  1password
-  # Applications
-  adium
-  # Using site install
-  #  alfred
-  alinof-timer
-  aquamacs
-  bartender
-  colloquy
-  disk-inventory-x
-  dropbox
-  firefox
-  gfxcardstatus
+  1password-cli
+  alfred
+#  alinof-timer
+#  bartender
+#  disk-inventory-x
+#  dropbox
+#  gfxcardstatus
+  fantastical
   gimp
   # Using site install
-  #  google-chrome
+  google-chrome
   inkscape
   iterm2
-  java
-  keka
-  keybase
-  oversight
-  puppet-agent
-  race-for-the-galaxy
-  sketchup
+#  java
+#  keka
+#  keybase
+#  oversight
+#  race-for-the-galaxy
   slack
   spotify
-  steam
-  stay
-  torbrowser
-  # SHA isn't validating. Trying out keka instead.
-  #  the-unarchiver
-  xquartz
-  yubico-authenticator
-  vagrant
-  virtualbox
+#  steam
+#  stay
+  the-unarchiver
+#  xquartz
+#  yubico-authenticator
+  visual-studio-code
   vlc
   wireshark
+  zoom
 )
 
 # Install Homebrew casks.

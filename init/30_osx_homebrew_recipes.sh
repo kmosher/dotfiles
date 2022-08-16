@@ -4,15 +4,14 @@ is_osx || return 1
 # Exit if Homebrew is not installed.
 [[ ! "$(type -P brew)" ]] && e_error "Brew recipes need Homebrew to install." && return 1
 
-# Ensure the cask keg and recipe are installed.
-kegs=(homebrew/dupes)
+# Setup any extra taps
+kegs=(hashicorp/tap)
 brew_tap_kegs
 
 
 # Homebrew recipes
 recipes=(
-  bash
-  cask  # This is Cask for Emacs, unrelated to homebrew
+  awscli
   emacs
   gist
   git
@@ -20,6 +19,7 @@ recipes=(
   git-lfs
   golang
   gpg
+  hashicorp/tap/terraform
   htop-osx
   httpie
   hub
@@ -27,19 +27,15 @@ recipes=(
   jq
   nmap
   openssh
-  packer
-  python
+  pulumi/tap/tf2pulumi
   python3
+  ripgrep
   ruby
   sqlite
-  terraform
-  the_silver_searcher
   tmux
   tree
-  vault
   watch
   wget
-  yubikey-personalization
   zsh
   zsh-syntax-highlighting
 )

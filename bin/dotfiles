@@ -45,11 +45,14 @@ function is_osx() {
 function is_ubuntu() {
   [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]] || return 1
 }
+function is_wsl() {
+  grep -qi microsoft /proc/version || return 1
+}
 function is_termux() {
   [[ "$OSTYPE" =~ ^linux-android ]] || return 1
 }
 function get_os() {
-  for os in osx ubuntu termux; do
+  for os in osx ubuntu termux wsl; do
     is_$os; [[ $? == ${1:-0} ]] && echo $os
   done
 }
