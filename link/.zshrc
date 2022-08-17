@@ -63,18 +63,15 @@ export TERM=xterm-256color
 [ -n "$TMUX" ] && export TERM=screen-256color
 
 if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
-    ZSH_HIGHLIGHT_STYLES[default]='fg=blue'
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
+  ZSH_HIGHLIGHT_STYLES[default]='fg=blue'
 elif [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
-    ZSH_HIGHLIGHT_STYLES[default]='fg=blue'
+  source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
+  ZSH_HIGHLIGHT_STYLES[default]='fg=blue'
+elif [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh]; then
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
+  ZSH_HIGHLIGHT_STYLES[default]='fg=blue'
 fi
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /home/kmosher/.local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/kmosher/.local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /home/kmosher/.local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/kmosher/.local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh

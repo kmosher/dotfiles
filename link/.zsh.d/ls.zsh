@@ -1,13 +1,18 @@
 # ls colors
 autoload colors && colors;
-export LSCOLORS="Gxfxcxdxbxegedabagacad"
-eval $(dircolors -b $HOME/.zsh.d/dircolors)
 
-# Enable ls colors
 if [ "$DISABLE_LS_COLORS" != "true" ]
 then
-    # Find the option for using colors in ls, depending on the version: Linux or BSD
-    ls --color -d /dev/null &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+  zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+  if whence dircolors >/dev/null; then
+    eval $(dircolors -b $HOME/.zsh.d/dircolors)
+    alias ls='ls --color'
+    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+  else
+    export CLICOLOR=1
+    zstyle ':completion:*:default' list-colors ''
+  fi
 fi
 
 # List direcory contents

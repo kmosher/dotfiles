@@ -5,8 +5,3 @@ autoload -U colors && colors
 
 PROMPT="%{$fg[red]%}[%* on %D]%{$fg[default]%} %{$fg[yellow]%}%B%~%b%{$fg[default]%}%# %{$fg[red]%}"
 #RPROMPT="%{$fg[red]%}[%* on %D]%{$fg[default]%}"
-
-# TODO: Redo as the zsh ternary syntax
-if [ "$YELP_IN_SANDBOX" ]; then
-    export PROMPT="$PROMPT (sandbox)\$ "
-fi
