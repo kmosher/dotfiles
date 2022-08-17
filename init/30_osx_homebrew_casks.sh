@@ -20,9 +20,9 @@ casks=(
 #  disk-inventory-x
 #  dropbox
 #  gfxcardstatus
-  fantastical
+# Using the App Store version
+    #  fantastical
   gimp
-  # Using site install
   google-chrome
   inkscape
   iterm2
@@ -49,7 +49,6 @@ casks=($(setdiff "${casks[*]}" "$(brew cask list 2>/dev/null)"))
 if (( ${#casks[@]} > 0 )); then
   e_header "Installing Homebrew casks: ${casks[*]}"
   for cask in "${casks[@]}"; do
-    brew cask install $cask
+    brew install --cask $cask
   done
-  brew cask cleanup
 fi

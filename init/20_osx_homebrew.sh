@@ -10,13 +10,6 @@ fi
 # Exit if, for some reason, Homebrew is not installed.
 [[ ! "$(type -P brew)" ]] && e_error "Homebrew failed to install." && return 1
 
-for dir in /usr/local /usr/local/share /usr/local/bin; do
-  if [[ ! -O "$dir" ]]; then
-    e_header "Fixing ${dir} perms"
-    sudo chown -R $(whoami) "$dir"
-  fi
-done
-
 e_header "Updating Homebrew"
 brew doctor
 brew update

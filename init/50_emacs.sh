@@ -1,1 +1,1 @@
-~/.cask/bin/cask install --verbose --path ~/.emacs.d/
+# TODO: add doomemacs stuff?
