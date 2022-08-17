@@ -1,3 +1,6 @@
 [submodule "vendor/zprezto"]
 	path = vendor/zprezto
 	url = https://github.com/sorin-ionescu/prezto.git
+[submodule "vendor/doomemacs"]
+	path = vendor/doomemacs
+	url = https://github.com/doomemacs/doomemacs
