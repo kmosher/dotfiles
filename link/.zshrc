@@ -62,6 +62,10 @@ export TERM=xterm-256color
 # for tmux: export 256color
 [ -n "$TMUX" ] && export TERM=screen-256color
 
+# For some reason I need this to make the DEL key work(???)
+bindkey "^[[3~" delete-char 
+
+
 if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
