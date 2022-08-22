@@ -15,6 +15,7 @@ brew_tap_kegs
 recipes=(
   awscli
   emacs
+  gh
   gist
   git
   git-extras
@@ -24,7 +25,6 @@ recipes=(
   hashicorp/tap/terraform
   htop-osx
   httpie
-  hub
   imagemagick
   jq
   nmap

@@ -31,7 +31,7 @@ alias pbers='puppet-bundle exec rake spec'
 
 alias ag='ag --path-to-ignore=~/.agignore'
 
-alias gphpr='git push origin HEAD; hub pull-request -o'
+alias gphpr='git push origin HEAD; gh pr create --web'
 
 ta() {
     tmux attach -t ${*:-0}

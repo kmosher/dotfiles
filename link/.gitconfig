@@ -27,7 +27,9 @@
 	name = Keith Mosher
 	email = keith.mosher@gmail.com
 [credential]
-	helper = !aws codecommit credential-helper $@
 	UseHttpPath = true
+	helper = /usr/local/share/gcm-core/git-credential-manager-core
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[credential "https://dev.azure.com"]
+	useHttpPath = true
