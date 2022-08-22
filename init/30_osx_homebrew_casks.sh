@@ -5,7 +5,9 @@ is_osx || return 1
 [[ ! "$(type -P brew)" ]] && e_error "Brew casks need Homebrew to install." && return 1
 
 # Ensure the cask keg and recipe are installed.
-kegs=()
+kegs=(
+  microsoft/git
+)
 brew_tap_kegs
 
 # Hack to show the first-run brew-cask password prompt immediately.
@@ -23,6 +25,7 @@ casks=(
 # Using the App Store version
     #  fantastical
   gimp
+  git-credential-manager-core
   google-chrome
   inkscape
   iterm2

@@ -5,7 +5,9 @@ is_osx || return 1
 [[ ! "$(type -P brew)" ]] && e_error "Brew recipes need Homebrew to install." && return 1
 
 # Setup any extra taps
-kegs=(hashicorp/tap)
+kegs=(
+  hashicorp/tap
+)
 brew_tap_kegs
 
 
