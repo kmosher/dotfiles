@@ -6,7 +6,8 @@ is_osx || return 1
 
 # Setup any extra taps
 kegs=(
-  hashicorp/tap
+  hashicorp/tap # terraform
+  jaxxstorm/tap # aws-sso-creds
 )
 brew_tap_kegs
 
@@ -14,6 +15,7 @@ brew_tap_kegs
 # Homebrew recipes
 recipes=(
   awscli
+  aws-sso-creds
   emacs
   gh
   gist
