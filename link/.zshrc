@@ -63,7 +63,7 @@ export TERM=xterm-256color
 [ -n "$TMUX" ] && export TERM=screen-256color
 
 # For some reason I need this to make the DEL key work(???)
-bindkey "^[[3~" delete-char 
+bindkey "^[[3~" delete-char
 
 
 if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
@@ -79,3 +79,8 @@ elif [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
   ZSH_HIGHLIGHT_STYLES[default]='fg=blue'
 fi
+
+source ~/.zsh-nvm/zsh-nvm.plugin.zsh
+# export NVM_DIR="$HOME/.nvm"
+#     [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
+#     [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion

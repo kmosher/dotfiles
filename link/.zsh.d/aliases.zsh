@@ -31,7 +31,29 @@ alias pbers='puppet-bundle exec rake spec'
 
 alias ag='ag --path-to-ignore=~/.agignore'
 
-alias gphpr='git push origin HEAD; gh pr create --web'
+alias ghpr='git push origin HEAD; gh pr create --web'
+
+alias gitdel='git checkout -q master && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]] && echo "$branch is merged into master and can be deleted"; done'
+
+alias gitdelgo='git checkout -q master && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
+
+aws-ex() {
+    env | grep AWS | sed -e 's/^/export /' | tee ~/.aws-session-creds
+}
+
+aws-env() {
+    eval $(aws-sso-creds export -p "$1")
+    aws-ex
+}
+
+aws-up() {
+    aws sso login --profile "$1" && eval $(aws-sso-creds export -p "$1")
+    aws-ex
+}
+
+aws-imp() {
+    source ~/.aws-session-creds
+}
 
 ta() {
     tmux attach -t ${*:-0}
